@@ -1,0 +1,10383 @@
+@import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,100,400..900;1,100,400..900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Mulish:wght@400;600;700&display=swap');
+
+/* =================================================================
+   TEXOMA BOAT HOUSE — style.css
+
+   Region order (read top→bottom). ALL base CSS first, ALL responsive last.
+   1. common            2. desktop nav        3. mega menu / mobile menu
+   4. footer            5. home page          6…N one region per page
+   LAST. RESPONSIVE — one @media block per breakpoint, nothing repeated.
+
+   New custom classes are prefixed  tbh-  .
+
+   Design tokens (from Figma):
+   Blue2  #43B2E5 · Blue1 #1D4386 · Navy1 #061426 · Dark Blue #0F2547
+   Lightest Blue BG #F4F7FA · E5 #E5E5E5 · White #FFFFFF
+   Layout: 1920 frame, 260px side gutters → 1400px content column.
+   ================================================================= */
+
+/* ============================== */
+/* 1. common css starts here      */
+/* ============================== */
+
+/* ---- reset / defaults ---- */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    color: #191919;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color .25s ease, opacity .25s ease;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ---- icons & images always read as clickable ---- */
+/* Applies even with no link and no click handler.                 */
+/* Add every new media-wrapper class to this list — never write a  */
+/* one-off cursor: pointer next to a component.                    */
+img,
+svg,
+i[class*="fa-"],
+.tbh-sales-img,
+.tbh-about-img,
+.tbh-svc-card,
+.tbh-promo {
+    cursor: pointer;
+}
+
+/* ---- typography ---- */
+.tbh-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.tbh-h1 {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 120px;
+    line-height: 100px;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.tbh-h2 {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 64px;
+    line-height: 60px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.tbh-h3 {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 46px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.tbh-h4 {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 30px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.tbh-p-lg {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 31.5px;
+    margin: 0;
+}
+
+.tbh-p-md {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29.7px;
+    margin: 0;
+}
+
+.tbh-p {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.tbh-p-sm-lead {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26.35px;
+    margin: 0;
+}
+
+.tbh-p-sm {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+}
+
+/* colour helpers */
+.tbh-accent {
+    color: #43b2e5;
+}
+
+.tbh-white {
+    color: #fff;
+}
+
+.tbh-dark {
+    color: #0f2547;
+}
+
+/* ---- buttons ---- */
+.tbh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 28px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
+/* cyan fill, navy label (default Figma pairing) */
+.tbh-btn-cyan {
+    background: #43b2e5;
+    color: #0f2547;
+    border-color: #43b2e5;
+}
+
+.tbh-btn-cyan:hover {
+    background: #2fa3da;
+    color: #0f2547;
+    border-color: #2fa3da;
+}
+
+/* cyan fill, white label (header + hero) */
+.tbh-btn-cyan-w {
+    background: #43b2e5;
+    color: #fff;
+    border-color: #43b2e5;
+}
+
+.tbh-btn-cyan-w:hover {
+    background: #2fa3da;
+    color: #fff;
+    border-color: #2fa3da;
+}
+
+.tbh-btn-blue {
+    background: #1d4386;
+    color: #fff;
+    border-color: #1d4386;
+}
+
+.tbh-btn-blue:hover {
+    background: #0f2547;
+    color: #fff;
+    border-color: #0f2547;
+}
+
+/* frosted glass on photography */
+.tbh-btn-ghost {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+
+.tbh-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.24);
+    color: #fff;
+}
+
+.tbh-btn-outline {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+}
+
+.tbh-btn-outline:hover {
+    background: #fff;
+    color: #1d4386;
+    border-color: #fff;
+}
+
+/* cyan fill, Navy1 label (financing page pairing) */
+.tbh-btn-cyan-navy {
+    background: #43b2e5;
+    color: #061426;
+    border-color: #43b2e5;
+}
+
+.tbh-btn-cyan-navy:hover {
+    background: #2fa3da;
+    color: #061426;
+    border-color: #2fa3da;
+}
+
+/* solid white fill, Navy1 label */
+.tbh-btn-white {
+    background: #fff;
+    color: #061426;
+    border-color: #fff;
+}
+
+.tbh-btn-white:hover {
+    background: #e5eef5;
+    color: #061426;
+    border-color: #e5eef5;
+}
+
+/* larger padded size used across the financing page (32/16) */
+.tbh-btn-lg {
+    height: auto;
+    padding: 15px 31px;
+    line-height: 20px;
+}
+
+/* 1px white outline, transparent fill (parts hero secondary) */
+.tbh-btn-outline-w {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.tbh-btn-outline-w:hover {
+    background: #fff;
+    color: #061426;
+}
+
+/* tinted cyan wash with 2px border */
+.tbh-btn-soft {
+    background: rgba(67, 178, 229, 0.08);
+    border: 2px solid rgba(67, 178, 229, 0.24);
+    color: #1d4386;
+}
+
+.tbh-btn-soft:hover {
+    background: rgba(67, 178, 229, 0.18);
+    color: #1d4386;
+}
+
+/* ---- section shell / spacing ---- */
+/* 1400px content column + 40px gutters = 1480 max width.          */
+/* At the 1920 Figma frame this reproduces the 260px side gutters. */
+.tbh-shell {
+    width: 100%;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ============================== */
+/* 2. desktop nav css starts here */
+/* ============================== */
+
+/* ---- top utility bar (40px) ---- */
+.tbh-topbar {
+    height: 40px;
+    background: #1d4386;
+}
+
+.tbh-topbar-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.tbh-topbar-tag {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 1.54px;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: .8;
+    white-space: nowrap;
+}
+
+.tbh-topbar-locations {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.tbh-topbar-loc {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.tbh-topbar-dot {
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 3.5px;
+    background: #43b2e5;
+    margin-right: 7px;
+}
+
+.tbh-topbar-city {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.39px;
+    color: #fff;
+    margin-right: 36px;
+}
+
+.tbh-topbar-phone {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.39px;
+    color: #fff;
+}
+
+.tbh-topbar-divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.24);
+}
+
+/* ---- header (80px, sticky) ---- */
+.tbh-header {
+    position: sticky;
+    top: 0;
+    z-index: 120;
+    height: 80px;
+    background: #fff;
+    filter: drop-shadow(0px 2px 12px rgba(6, 20, 38, 0.1));
+}
+
+.tbh-header-inner {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tbh-logo {
+    flex: none;
+    display: block;
+    width: 241px;
+}
+
+.tbh-logo img {
+    width: 100%;
+    height: auto;
+}
+
+/* nav sits dead-centre of the frame, exactly as in the design */
+.tbh-nav {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.tbh-nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #0f2547;
+    white-space: nowrap;
+}
+
+.tbh-nav-link:hover {
+    color: #43b2e5;
+}
+
+.tbh-header-right {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* two-part vector magnifier, exported from Figma */
+.tbh-search {
+    position: relative;
+    flex: none;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background: none;
+    border: none;
+    overflow: hidden;
+}
+
+.tbh-search-a {
+    position: absolute;
+    left: 16.67%;
+    top: 16.67%;
+    right: 25%;
+    bottom: 25%;
+}
+
+.tbh-search-a img {
+    position: absolute;
+    left: -8.57%;
+    top: -8.57%;
+    width: 117.14%;
+    height: 117.14%;
+    max-width: none;
+}
+
+.tbh-search-b {
+    position: absolute;
+    left: 68.75%;
+    top: 68.75%;
+    right: 12.5%;
+    bottom: 12.5%;
+}
+
+.tbh-search-b img {
+    position: absolute;
+    left: -26.67%;
+    top: -26.67%;
+    width: 153.34%;
+    height: 153.34%;
+    max-width: none;
+}
+
+.tbh-header-cta {
+    width: 180px;
+    height: 42px;
+    padding: 0;
+    font-size: 14px;
+    letter-spacing: 0.78px;
+}
+
+.tbh-burger {
+    display: none;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #0f2547;
+    background: none;
+    border: none;
+}
+
+.tbh-burger:hover {
+    color: #43b2e5;
+}
+
+/* ============================== */
+/* 3. mega menu css starts here   */
+/* ============================== */
+
+/* ---- inventory mega menu (desktop, >991) ---- */
+.tbh-nav-item-mega {
+    display: flex;
+    align-items: center;
+}
+
+/* no position:relative here on purpose — the panel's containing block
+   resolves up to .tbh-header (position: sticky), so left/right:0 spans
+   the header's own full width instead of this small nav item's width */
+.tbh-megamenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background: #fff;
+    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.08);
+    padding: 40px 0 96px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+}
+
+.tbh-megamenu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+/* 1200px of content plus 40px safety padding each side (border-box), so
+   the content column is exactly 1200px wide once the panel is comfortably
+   wider than that, and gains a minimum gutter below it */
+.tbh-megamenu-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 96px;
+}
+
+.tbh-megamenu-links {
+    flex: none;
+    width: 240px;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.tbh-megamenu-group {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tbh-megamenu-link {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-megamenu-link:hover {
+    color: #43b2e5;
+}
+
+.tbh-megamenu-grid {
+    flex: 1 0 0;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.tbh-megamenu-card {
+    position: relative;
+    display: block;
+    height: 220px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-megamenu-card img.tbh-megamenu-card-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* figma crops this one image with a custom scale/offset instead of a
+   centred cover, so it's reproduced literally rather than approximated */
+.tbh-megamenu-card-supra .tbh-megamenu-card-bg {
+    left: 0;
+    top: -7.33%;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: 107.39%;
+    object-fit: fill;
+}
+
+.tbh-megamenu-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(225.13deg, rgba(0, 0, 0, 0) 15.8%, rgba(0, 0, 0, .4) 84.7%);
+}
+
+.tbh-megamenu-card-logo {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    z-index: 1;
+}
+
+/* ---- experience mega menu (desktop, >991) ---- */
+/* not full-bleed like the inventory panel — this one is a floating
+   1400px card matching the site's .tbh-shell content width, so it's its
+   own sized box rather than a full-width bar with an inner column */
+.tbh-megamenu-exp {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 100%;
+    max-width: 1400px;
+    background: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 4px 16px 16px 0px rgba(0, 0, 0, .08);
+    padding: 40px 120px 80px;
+    display: flex;
+    align-items: flex-start;
+    gap: 76px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-8px);
+    transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+}
+
+.tbh-megamenu-exp.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.tbh-megamenu-exp-links {
+    flex: none;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tbh-megamenu-exp-cards {
+    flex: 1 0 0;
+    min-width: 0;
+    display: flex;
+    gap: 24px;
+}
+
+.tbh-megamenu-exp-card {
+    position: relative;
+    flex: 1 0 0;
+    min-width: 0;
+    height: 220px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-megamenu-exp-card-label {
+    position: absolute;
+    left: 24px;
+    bottom: 20px;
+    z-index: 1;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.tbh-megamenu-exp-card-logo {
+    position: absolute;
+    left: 24px;
+    top: 51px;
+    width: 120px;
+    height: 119px;
+    z-index: 1;
+}
+
+/* ---- service nav dropdown (desktop, >991) ---- */
+/* small — unlike the two mega panels this hangs directly off its own
+   trigger, so the wrapper is a real positioning context and the panel
+   never gets reparented to the header */
+.tbh-nav-item-drop {
+    position: relative;
+}
+
+.tbh-navdrop {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 300px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, .08);
+    padding: 40px 40px 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+    z-index: 5;
+}
+
+.tbh-navdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+/* ---- mobile off-canvas menu (shown ≤991, see RESPONSIVE) ---- */
+.tbh-noscroll {
+    overflow: hidden;
+}
+
+.tbh-mobileMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 360px;
+    max-width: 88vw;
+    height: 100%;
+    background: #fff;
+    z-index: 200;
+    display: none;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    box-shadow: -10px 0 30px rgba(6, 20, 38, 0.15);
+}
+
+.tbh-mobileMenu.is-open {
+    transform: translateX(0);
+}
+
+.tbh-mobileMenu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 20, 38, 0.6);
+    z-index: 190;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s ease;
+}
+
+.tbh-mobileMenu-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tbh-mobileMenu-head {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 24px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tbh-mobileMenu-logo {
+    width: 160px;
+}
+
+.tbh-mobileMenu-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    color: #0f2547;
+}
+
+.tbh-mobileMenu-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.tbh-mobileMenu-link {
+    display: block;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 16px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-mobileMenu-link:hover {
+    color: #43b2e5;
+}
+
+.tbh-mobileMenu-foot {
+    flex: none;
+    padding: 24px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.tbh-mobileMenu-phone {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    color: #1d4386;
+}
+
+.tbh-mobileMenu-cta {
+    width: 100%;
+    margin-top: 16px;
+}
+
+/* ============================== */
+/* 4. FOOTER css starts here      */
+/* ============================== */
+.tbh-footer {
+    background: #061426;
+    padding: 96px 0 48px;
+}
+
+.tbh-footer-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+.tbh-footer-brand {
+    flex: none;
+    width: 520px;
+}
+
+.tbh-footer-brand img {
+    width: 280px;
+    height: auto;
+    margin-bottom: 16px;
+}
+
+.tbh-footer-blurb {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tbh-footer-news {
+    flex: 1 0 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    text-align: right;
+}
+
+.tbh-footer-news-title {
+    width: 100%;
+    text-align: right;
+}
+
+.tbh-footer-news-copy {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tbh-footer-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tbh-footer-form input {
+    width: 320px;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.04);
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+}
+
+.tbh-footer-form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tbh-footer-form input:focus {
+    outline: none;
+    border-color: rgba(67, 178, 229, 0.6);
+}
+
+.tbh-footer-subscribe {
+    padding: 0 20px;
+}
+
+.tbh-footer-divider {
+    display: block;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+    margin: 56px 0;
+}
+
+.tbh-footer-col {
+    flex: 0 0 15.4286%;
+    max-width: 15.4286%;
+    margin-right: 5.7143%;
+}
+
+.tbh-footer-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-footer-coltitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    color: #43b2e5;
+    margin-bottom: 12px;
+}
+
+.tbh-footer-col li {
+    margin-bottom: 10px;
+}
+
+.tbh-footer-col li:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-footer-col li a {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tbh-footer-col li a:hover {
+    color: #43b2e5;
+}
+
+.tbh-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.tbh-footer-bottom p {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================== */
+/* 5. home page css starts here   */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-hero {
+    position: relative;
+    height: 1120px;
+    background: #061426;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.tbh-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-hero-grad {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(10, 26, 48, 0.24) 38%, rgba(10, 26, 48, 0.8) 100%);
+}
+
+.tbh-hero-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-hero-content .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 39px;
+}
+
+.tbh-hero-content .tbh-h1 {
+    color: #fff;
+}
+
+.tbh-hero-para {
+    max-width: 800px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 24.5px;
+}
+
+.tbh-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 48px;
+}
+
+.tbh-hero-btn1,
+.tbh-hero-btn2 {
+    height: 56px;
+    padding: 0;
+}
+
+.tbh-hero-btn1 {
+    width: 260px;
+}
+
+.tbh-hero-btn2 {
+    width: 240px;
+}
+
+.tbh-hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 24px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 14px;
+    display: block;
+}
+
+.tbh-hero-scroll-dot {
+    position: absolute;
+    left: 50%;
+    top: 18.75px;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    border-radius: 2px;
+    background: #fff;
+}
+
+/* ---- boat sales ---- */
+.tbh-sales {
+    background: #fff;
+    padding: 130px 0;
+}
+
+.tbh-sales-media {
+    flex: 0 0 48%;
+    max-width: 48%;
+}
+
+.tbh-sales-text {
+    flex: 0 0 46.357%;
+    max-width: 46.357%;
+}
+
+.tbh-sales-img {
+    position: relative;
+    padding-top: 125%;
+    /* 840 / 672 */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-sales-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.tbh-sales-img:hover img {
+    transform: scale(1.04);
+}
+
+.tbh-sales-text .tbh-eyebrow {
+    margin-bottom: 16px;
+}
+
+.tbh-sales-text .tbh-h2 {
+    max-width: 560px;
+}
+
+.tbh-sales-para {
+    max-width: 560px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 18px;
+}
+
+.tbh-sales-brands {
+    display: flex;
+    align-items: center;
+    gap: 46px;
+    height: 81px;
+    margin-top: 33.5px;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tbh-brand-supra {
+    width: 116px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.tbh-brand-moomba {
+    width: 145px;
+    height: 9px;
+    object-fit: contain;
+}
+
+.tbh-brand-thor {
+    width: 101px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.tbh-brand-flite {
+    width: 99px;
+    height: 23px;
+    object-fit: contain;
+}
+
+.tbh-sales-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 33px;
+}
+
+.tbh-sales-btn1,
+.tbh-sales-btn2 {
+    height: 51px;
+    padding: 0;
+}
+
+.tbh-sales-btn1 {
+    width: 260px;
+}
+
+.tbh-sales-btn2 {
+    width: 288px;
+}
+
+/* ---- in-shop & mobile service ---- */
+.tbh-svc {
+    background: #0f2547;
+    padding: 116px 0 135px;
+}
+
+.tbh-svc-head .tbh-eyebrow {
+    margin-bottom: 16px;
+}
+
+.tbh-svc-row {
+    margin-top: 51px;
+}
+
+.tbh-svc-col {
+    flex: 0 0 49.071%;
+    max-width: 49.071%;
+}
+
+.tbh-svc-card {
+    position: relative;
+    height: 879px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+}
+
+.tbh-svc-card>img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.tbh-svc-card:hover>img {
+    transform: scale(1.04);
+}
+
+/* the mobile-service photo is framed on its right edge in the design */
+.tbh-svc-col:last-child .tbh-svc-card>img {
+    object-position: 100% center;
+}
+
+.tbh-svc-card-grad {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10, 26, 48, 0) 40%, rgba(8, 25, 47, 0.9) 100%);
+}
+
+.tbh-svc-badge {
+    position: absolute;
+    left: 23px;
+    top: 22px;
+    height: 32px;
+    padding: 0 15px;
+    display: inline-flex;
+    align-items: center;
+    background: #43b2e5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 1.32px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-svc-card-body {
+    position: absolute;
+    left: 42px;
+    right: 45px;
+    bottom: 41px;
+}
+
+.tbh-svc-card-body .tbh-h4 {
+    margin-bottom: 16px;
+}
+
+.tbh-svc-card-body .tbh-p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tbh-svc-cta {
+    margin-top: 48px;
+}
+
+.tbh-svc-btn {
+    height: 54px;
+    padding: 0 34px;
+}
+
+/* ---- about us ---- */
+.tbh-about {
+    background: #f4f7fa;
+    padding: 110px 0;
+}
+
+.tbh-about-text {
+    flex: 0 0 47%;
+    max-width: 47%;
+    padding-top: 121px;
+}
+
+.tbh-about-media {
+    flex: 0 0 48%;
+    max-width: 48%;
+}
+
+.tbh-about-text .tbh-eyebrow {
+    margin-bottom: 16px;
+}
+
+.tbh-about-para {
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 22px;
+}
+
+.tbh-about-cards {
+    margin-top: 48px;
+}
+
+.tbh-about-col {
+    flex: 0 0 48.176%;
+    max-width: 48.176%;
+    margin-right: 3.648%;
+}
+
+.tbh-about-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-about-card {
+    height: 160px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 26px 19px 0 28px;
+}
+
+.tbh-about-card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 19px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin-bottom: 7px;
+}
+
+.tbh-about-card-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 15px;
+    line-height: 23.25px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.tbh-about-card-phone {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 19px;
+    color: #43b2e5;
+    margin-top: 15px;
+}
+
+.tbh-about-btn {
+    height: 50px;
+    padding: 0 28px;
+    margin-top: 40px;
+}
+
+.tbh-about-img {
+    position: relative;
+    padding-top: 127.976%;
+    /* 860 / 672 */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-about-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.tbh-about-img:hover img {
+    transform: scale(1.04);
+}
+
+/* ---- pro shop & events cards ---- */
+.tbh-cards {
+    background: #fff;
+    padding: 118px 0;
+}
+
+.tbh-cards-col {
+    flex: 0 0 49.071%;
+    max-width: 49.071%;
+}
+
+.tbh-promo {
+    position: relative;
+    display: block;
+    height: 859px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #e5e5e5;
+}
+
+.tbh-promo>img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.tbh-promo:hover>img {
+    transform: scale(1.04);
+}
+
+.tbh-promo-grad {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10, 26, 48, 0) 40%, rgba(8, 25, 47, 0.9) 100%);
+}
+
+.tbh-promo-body {
+    position: absolute;
+    left: 42px;
+    right: 42px;
+    bottom: 40px;
+}
+
+.tbh-promo-body .tbh-eyebrow {
+    margin-bottom: 16px;
+}
+
+.tbh-promo-body .tbh-h3 {
+    max-width: 440px;
+    margin-bottom: 16px;
+}
+
+.tbh-p-sm-lead {
+    max-width: 440px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tbh-promo-btn {
+    margin-top: 32px;
+}
+
+/* ---- financing ---- */
+.tbh-fin {
+    background: #1d4386;
+    padding: 109px 0 140px;
+}
+
+.tbh-fin-text {
+    flex: 0 0 48.571%;
+    max-width: 48.571%;
+}
+
+.tbh-fin-actions {
+    flex: 0 0 34.286%;
+    max-width: 34.286%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 60px;
+}
+
+.tbh-fin-text .tbh-eyebrow {
+    margin-bottom: 15px;
+}
+
+.tbh-fin-para {
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 17px;
+}
+
+.tbh-fin-btn {
+    width: 100%;
+    height: 64px;
+}
+
+/* ---- sasser wakeboard & watersports school ---- */
+.tbh-school {
+    position: relative;
+    background: rgba(8, 25, 47, 0.6);
+    overflow: hidden;
+    padding: 129px 0 149px;
+}
+
+.tbh-school-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 71%;
+    z-index: 0;
+}
+
+.tbh-school-grad {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to right, rgba(8, 25, 47, 0.92) 0%, rgba(8, 25, 47, 0.72) 45%, rgba(8, 25, 47, 0.35) 100%);
+}
+
+.tbh-school-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-school .tbh-eyebrow {
+    margin-bottom: 16px;
+}
+
+.tbh-school .tbh-h2 {
+    max-width: 520px;
+}
+
+.tbh-school-para {
+    max-width: 520px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 22px;
+}
+
+.tbh-school-cards {
+    margin-top: 48px;
+}
+
+.tbh-school-col {
+    flex: 0 0 21.429%;
+    max-width: 21.429%;
+    margin-right: 1.429%;
+}
+
+.tbh-school-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-level {
+    height: 193.5px;
+    padding: 28px;
+    border: 1px solid rgba(67, 178, 229, 0.4);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+.tbh-level-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 34px;
+    line-height: 42px;
+    color: #43b2e5;
+    margin-bottom: 3px;
+}
+
+.tbh-level-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 8px;
+}
+
+.tbh-level .tbh-p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tbh-school-btn {
+    height: 54px;
+    padding: 0 34px;
+    margin-top: 44px;
+}
+
+/* ============================== */
+/* 6. FINANCING PAGE — CSS        */
+/* ============================== */
+
+/* ---- shared centred section heading (why / steps / faq) ---- */
+.tbh-sec-head {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.tbh-sec-head .tbh-eyebrow {
+    margin-bottom: 16px;
+}
+
+/* ---- hero ---- */
+.tbh-fh {
+    position: relative;
+    height: 840px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tbh-fh-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-fh-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.76);
+}
+
+.tbh-fh-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-fh .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-fh-title {
+    max-width: 900px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-fh-para {
+    max-width: 800px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-fh-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ---- why finance ---- */
+.tbh-why {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-why .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-why-grid {
+    margin-top: 48px;
+}
+
+.tbh-why-col {
+    flex: 0 0 31.4286%;
+    max-width: 31.4286%;
+    margin-right: 2.857%;
+}
+
+.tbh-why-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-benefit {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 39px;
+}
+
+.tbh-benefit-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    background: #f4f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tbh-benefit-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.tbh-benefit-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 20px;
+}
+
+.tbh-benefit-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+}
+
+/* ---- preferred lending partners ---- */
+.tbh-partners {
+    background: #fff;
+    padding: 80px 0;
+}
+
+.tbh-partners-title {
+    text-align: center;
+    color: #1d4386;
+    margin-bottom: 48px;
+}
+
+.tbh-lender-col {
+    flex: 0 0 220px;
+    max-width: 220px;
+    margin-right: 40px;
+}
+
+.tbh-lender-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-lender {
+    height: 80px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* each mark keeps its own designed geometry — never one shared size */
+.tbh-lender img {
+    width: 172px;
+    height: auto;
+    max-width: none;
+}
+
+/* this mark is height-driven in the design (padding 12/24) */
+.tbh-lender-botw {
+    padding: 12px 24px;
+}
+
+.tbh-lender-botw img {
+    width: auto;
+    height: 56px;
+}
+
+/* ---- financing process steps ---- */
+.tbh-steps {
+    background: #0f2547;
+    padding: 96px 0;
+}
+
+.tbh-steps .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-steps-row {
+    margin-top: 48px;
+}
+
+.tbh-step-col {
+    flex: 0 0 31.4286%;
+    max-width: 31.4286%;
+    margin-right: 2.857%;
+}
+
+.tbh-step-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-step {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 40px;
+}
+
+.tbh-step-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 58px;
+    color: #43b2e5;
+    margin-bottom: 16px;
+}
+
+.tbh-step-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 16px;
+}
+
+.tbh-step-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---- financing faq ---- */
+.tbh-ffaq {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-ffaq .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-ffaq-list {
+    max-width: 1000px;
+    margin: 48px auto 0;
+}
+
+.tbh-ffaq-row {
+    background: #f4f7fa;
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.tbh-ffaq-row:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-ffaq-q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-ffaq-q img {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    transition: transform .3s ease;
+}
+
+/* rows ship open with the chevron pointing down, as designed;
+   it flips only once a visitor collapses the row */
+.tbh-ffaq-row:not(.is-open) .tbh-ffaq-q img {
+    transform: rotate(180deg);
+}
+
+.tbh-ffaq-a {
+    display: none;
+    padding-top: 12px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+}
+
+.tbh-ffaq-row.is-open .tbh-ffaq-a {
+    display: block;
+}
+
+/* ---- final cta ---- */
+.tbh-fcta {
+    background: #1d4386;
+    padding: 96px 0;
+    text-align: center;
+}
+
+.tbh-fcta-title {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    color: #fff;
+}
+
+.tbh-fcta-para {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    color: #fff;
+    opacity: .9;
+}
+
+/* ============================== */
+/* 7. SCHEDULE DEMO PAGE — CSS    */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-dh {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tbh-dh-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-dh-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.6);
+}
+
+.tbh-dh-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-dh .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-dh-title {
+    max-width: 900px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-dh-para {
+    max-width: 800px;
+    color: #fff;
+}
+
+/* ---- form + details row ---- */
+.tbh-demo-main {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-demo-form-col {
+    flex: 0 0 57.1429%;
+    max-width: 57.1429%;
+}
+
+.tbh-demo-details-col {
+    flex: 0 0 34.2857%;
+    max-width: 34.2857%;
+}
+
+/* ---- vip demo request form ---- */
+.tbh-demo-form {
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 47px;
+}
+
+.tbh-demo-form-title {
+    color: #0f2547;
+    margin-bottom: 32px;
+}
+
+.tbh-fg {
+    margin-bottom: 24px;
+}
+
+.tbh-demo-fields>.tbh-fg:last-child,
+.tbh-demo-fields>.row:last-child .tbh-fg {
+    margin-bottom: 0;
+}
+
+/* two fields per row with a 20px gutter, exact at any container width */
+.tbh-fg-col {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+}
+
+.tbh-fg-label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin-bottom: 8px;
+}
+
+.tbh-fg input,
+.tbh-fg textarea {
+    display: block;
+    width: 100%;
+    height: 42px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    padding: 12px 16px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #191919;
+}
+
+.tbh-fg textarea {
+    resize: vertical;
+    overflow: auto;
+}
+
+.tbh-fg input::placeholder,
+.tbh-fg textarea::placeholder {
+    color: #888;
+}
+
+.tbh-fg input:focus,
+.tbh-fg textarea:focus {
+    outline: none;
+    border-color: #43b2e5;
+}
+
+.tbh-demo-submit {
+    margin-top: 32px;
+}
+
+/* ---- location & timing column ---- */
+.tbh-demo-meta .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-demo-meta-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-demo-meta-para {
+    color: #000;
+    opacity: .8;
+}
+
+.tbh-loc-list {
+    margin-top: 48px;
+}
+
+.tbh-loc-card {
+    background: #f4f7fa;
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.tbh-loc-card:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-loc-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin-bottom: 8px;
+}
+
+.tbh-loc-addr {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .7;
+    margin-bottom: 8px;
+}
+
+.tbh-loc-hours {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    color: #1d4386;
+}
+
+/* ---- what to expect on demo day ---- */
+.tbh-expect {
+    background: #0f2547;
+    padding: 96px 0;
+}
+
+.tbh-expect .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-expect .tbh-sec-head .tbh-eyebrow {
+    margin-bottom: 12px;
+}
+
+.tbh-expect-grid {
+    margin-top: 56px;
+}
+
+.tbh-expect-col {
+    flex: 0 0 31.4286%;
+    max-width: 31.4286%;
+    margin-right: 2.857%;
+}
+
+.tbh-expect-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-expect-card {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 40px;
+}
+
+.tbh-expect-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    background: #061426;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tbh-expect-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.tbh-expect-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 20px;
+}
+
+.tbh-expect-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================== */
+/* 8. SERVICE PAGE — CSS          */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-srv-hero {
+    position: relative;
+    height: 840px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tbh-srv-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-srv-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.65);
+}
+
+.tbh-srv-hero-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-srv-hero .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-srv-hero-title {
+    max-width: 900px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-srv-hero-para {
+    max-width: 800px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+/* ---- authorized services matrix ---- */
+.tbh-srv-grid-sec {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-srv-grid-sec .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-srv-matrix {
+    margin-top: 48px;
+    margin-bottom: -20px;
+}
+
+/* three across with a 20px gutter — (1400 - 40) / 3 = 453.33 */
+.tbh-srv-col {
+    flex: 0 0 calc((100% - 40px) / 3);
+    max-width: calc((100% - 40px) / 3);
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.tbh-srv-col:nth-child(3n) {
+    margin-right: 0;
+}
+
+.tbh-srv-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 31px;
+}
+
+.tbh-srv-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    background: #f4f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.tbh-srv-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.tbh-srv-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 16px;
+}
+
+.tbh-srv-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+}
+
+/* ---- the boathouse difference ---- */
+.tbh-srv-why {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-srv-why .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-srv-why-text {
+    flex: 0 0 42.857%;
+    max-width: 42.857%;
+}
+
+.tbh-srv-why-media {
+    flex: 0 0 51.4286%;
+    max-width: 51.4286%;
+}
+
+.tbh-srv-why-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-srv-why-para {
+    color: #000;
+    opacity: .8;
+    margin-bottom: 24px;
+}
+
+.tbh-srv-check {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.tbh-srv-check:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-srv-check img {
+    flex: none;
+    width: 20px;
+    height: 20px;
+}
+
+.tbh-srv-check span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-srv-depot {
+    height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-srv-depot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---- request an appointment ---- */
+.tbh-srv-form-sec {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-srv-form-sec .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-srv-form {
+    max-width: 1000px;
+    margin: 48px auto 0;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 47px;
+    text-align: center;
+}
+
+.tbh-srv-form .tbh-demo-fields {
+    text-align: left;
+}
+
+.tbh-srv-form .tbh-demo-submit {
+    margin-top: 32px;
+}
+
+/* ============================== */
+/* 9. MOBILE SERVICE PAGE — CSS   */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-ms-hero {
+    position: relative;
+    height: 720px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tbh-ms-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-ms-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.8);
+}
+
+.tbh-ms-hero-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-ms-hero .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-ms-hero-title {
+    max-width: 760px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-ms-hero-para {
+    max-width: 760px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+/* ---- how lakeside service works ---- */
+.tbh-ms-how {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-ms-how .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-ms-steps {
+    margin-top: 48px;
+}
+
+.tbh-ms-step-col {
+    flex: 0 0 31.4286%;
+    max-width: 31.4286%;
+    margin-right: 2.857%;
+}
+
+.tbh-ms-step-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-ms-step {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 39px;
+}
+
+.tbh-ms-step-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 58px;
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ms-step-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 16px;
+}
+
+.tbh-ms-step-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+}
+
+/* ---- mobile services available ---- */
+.tbh-ms-list-sec {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-ms-list-text {
+    flex: 0 0 42.857%;
+    max-width: 42.857%;
+}
+
+.tbh-ms-list-col {
+    flex: 0 0 51.4286%;
+    max-width: 51.4286%;
+}
+
+.tbh-ms-list-text .tbh-eyebrow {
+    margin-bottom: 32px;
+}
+
+.tbh-ms-list-title {
+    color: #0f2547;
+    margin-bottom: 32px;
+}
+
+.tbh-ms-list-para {
+    color: #000;
+    opacity: .8;
+    margin-bottom: 32px;
+}
+
+.tbh-ms-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #f4f7fa;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.tbh-ms-row:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-ms-row-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.tbh-ms-row-left img {
+    flex: none;
+    width: 20px;
+    height: 20px;
+}
+
+.tbh-ms-row-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    color: #0f2547;
+}
+
+.tbh-ms-row-time {
+    flex: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 18px;
+    color: #1d4386;
+    white-space: nowrap;
+}
+
+/* ---- service coverage area ---- */
+.tbh-ms-coverage {
+    background: #0f2547;
+    padding: 96px 0;
+}
+
+.tbh-ms-coverage .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-ms-map-split {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    margin-top: 48px;
+}
+
+.tbh-ms-map {
+    flex: 0 0 57.1429%;
+    max-width: 57.1429%;
+    height: 480px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-ms-map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-ms-radius {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-ms-radius-title {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 24px;
+}
+
+.tbh-ms-radius-para {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+}
+
+.tbh-ms-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tbh-ms-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* ============================== */
+/* 10. PARTS PAGE — CSS           */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-pt-hero {
+    position: relative;
+    height: 840px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tbh-pt-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-pt-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.8);
+}
+
+.tbh-pt-hero-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-pt-hero .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-pt-hero-title {
+    max-width: 1000px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-pt-hero-para {
+    max-width: 800px;
+    color: #fff;
+}
+
+.tbh-pt-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+/* ---- featured parts categories ---- */
+.tbh-pt-cats {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-pt-cats .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-pt-cats-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-pt-cats-para {
+    max-width: 800px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.tbh-pt-cats-grid {
+    margin-top: 56px;
+    margin-bottom: -24px;
+}
+
+.tbh-pt-cat-col {
+    flex: 0 0 calc((100% - 48px) / 3);
+    max-width: calc((100% - 48px) / 3);
+    margin-right: 24px;
+    margin-bottom: 24px;
+}
+
+.tbh-pt-cat-col:nth-child(3n) {
+    margin-right: 0;
+}
+
+.tbh-pt-cat-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 39px;
+}
+
+.tbh-pt-cat-img {
+    height: 260px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.tbh-pt-cat-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-pt-cat-title {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 8px;
+}
+
+.tbh-pt-cat-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* ---- why source from us ---- */
+.tbh-pt-why {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-pt-why-head {
+    max-width: 900px;
+}
+
+.tbh-pt-why-head .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-pt-why-title {
+    color: #0f2547;
+}
+
+.tbh-pt-why-grid {
+    margin-top: 48px;
+}
+
+.tbh-pt-why-col {
+    flex: 0 0 calc((100% - 80px) / 3);
+    max-width: calc((100% - 80px) / 3);
+    margin-right: 40px;
+}
+
+.tbh-pt-why-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-pt-why-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 39px;
+}
+
+.tbh-pt-why-num {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 46px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin: 0 0 20px;
+}
+
+.tbh-pt-why-card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 20px;
+}
+
+.tbh-pt-why-card-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* ---- parts finder + in-store pickup ---- */
+.tbh-pt-finder {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-pt-finder-text {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-pt-finder-cardcol {
+    display: flex;
+}
+
+.tbh-pt-finder-card {
+    flex: 1 1 auto;
+    width: 100%;
+    background: #0f2547;
+    border-radius: 8px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tbh-pt-finder-col {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-pt-finder-text .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-pt-finder-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-pt-finder-para {
+    max-width: 800px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 48px;
+}
+
+.tbh-pf-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tbh-pf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tbh-pf-label {
+    display: block;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-pf-field input,
+.tbh-pf-field textarea {
+    width: 100%;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #191919;
+}
+
+.tbh-pf-field textarea {
+    resize: vertical;
+    overflow: auto;
+}
+
+.tbh-pf-field input::placeholder,
+.tbh-pf-field textarea::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.tbh-pf-field input:focus,
+.tbh-pf-field textarea:focus {
+    outline: none;
+    border-color: #43b2e5;
+}
+
+.tbh-pf-checkline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.tbh-pf-checkline img {
+    flex: none;
+    width: 20px;
+    height: 20px;
+}
+
+.tbh-pf-checkline span {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #0f2547;
+}
+
+.tbh-pf-submit {
+    align-self: flex-start;
+}
+
+/* ---- in-store pickup card ---- */
+.tbh-pt-pickup-title {
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-pt-pickup-para {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 32px;
+}
+
+.tbh-pt-store {
+    margin-bottom: 16px;
+}
+
+.tbh-pt-store:last-of-type {
+    margin-bottom: 32px;
+}
+
+.tbh-pt-store-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 4px;
+}
+
+.tbh-pt-store-addr {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+}
+
+.tbh-pt-pickup-map {
+    height: 200px;
+    border-radius: 4px;
+    background: #c4c4c4;
+    margin-top: auto;
+}
+
+/* ---- authorized oem brands strip ---- */
+.tbh-pt-brands {
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    padding: 96px 0;
+}
+
+.tbh-pt-brands-title {
+    text-align: center;
+    color: #1d4386;
+    margin-bottom: 48px;
+}
+
+.tbh-pt-brand {
+    max-width: 220px;
+    margin: 0 auto;
+    height: 80px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tbh-pt-brand img {
+    max-width: 100%;
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ============================== */
+/* 11. ABOUT PAGE — CSS           */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-ab-hero {
+    position: relative;
+    height: 799px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tbh-ab-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-ab-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.8);
+}
+
+.tbh-ab-hero-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-ab-hero .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-ab-hero-title {
+    max-width: 1000px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-ab-hero-para {
+    max-width: 800px;
+    color: #fff;
+}
+
+/* ---- family owned & operated ---- */
+.tbh-ab-founded {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-ab-founded-media {
+    flex: 0 0 45.714%;
+    max-width: 45.714%;
+}
+
+.tbh-ab-founded-media-box {
+    height: 600px;
+    border-radius: 8px;
+    background: #c4c4c4;
+}
+
+.tbh-ab-founded-text {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-ab-founded-text .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ab-founded-title {
+    color: #0f2547;
+}
+
+.tbh-ab-founded-para {
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 24px;
+}
+
+.tbh-ab-founded-para+.tbh-ab-founded-para {
+    margin-top: 24px;
+}
+
+/* ---- what drives us forward ---- */
+.tbh-ab-principles {
+    background: #0f2547;
+    padding: 96px 0;
+}
+
+.tbh-ab-principles .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 16px;
+}
+
+.tbh-ab-principles-grid {
+    margin-top: 48px;
+}
+
+.tbh-ab-principle-col {
+    flex: 0 0 calc((100% - 80px) / 3);
+    max-width: calc((100% - 80px) / 3);
+    margin-right: 40px;
+}
+
+.tbh-ab-principle-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-ab-principle-num {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 46px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin: 0 0 16px;
+}
+
+.tbh-ab-principle-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 16px;
+}
+
+.tbh-ab-principle-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---- meet our team ---- */
+.tbh-ab-team {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-ab-team .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ab-team-title {
+    color: #0f2547;
+    margin-bottom: 16px;
+}
+
+.tbh-ab-team-para {
+    max-width: 800px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.tbh-ab-team-grid {
+    margin-top: 56px;
+    margin-bottom: -32px;
+}
+
+.tbh-ab-team-col {
+    flex: 0 0 calc((100% - 96px) / 4);
+    max-width: calc((100% - 96px) / 4);
+    margin-right: 32px;
+    margin-bottom: 32px;
+}
+
+.tbh-ab-team-col:nth-child(4n) {
+    margin-right: 0;
+}
+
+.tbh-ab-person-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.tbh-ab-person-photo {
+    height: 400px;
+    border-radius: 8px;
+    background: #c4c4c4;
+    margin-bottom: 16px;
+}
+
+.tbh-ab-person-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 4px;
+}
+
+.tbh-ab-person-role {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1d4386;
+}
+
+/* ---- two convenient regional hubs ---- */
+.tbh-ab-hubs {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-ab-hubs .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ab-hubs-title {
+    color: #0f2547;
+}
+
+.tbh-ab-hubs-grid {
+    margin-top: 48px;
+}
+
+.tbh-ab-hub-col {
+    flex: 0 0 calc((100% - 40px) / 2);
+    max-width: calc((100% - 40px) / 2);
+    margin-right: 40px;
+}
+
+.tbh-ab-hub-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-ab-hub-media {
+    padding-top: 62.5%;
+    /* 16:10 */
+    position: relative;
+    border-radius: 8px;
+    background: #c4c4c4;
+    margin-bottom: 24px;
+}
+
+.tbh-ab-hub-name {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 46px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 8px;
+}
+
+.tbh-ab-hub-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 8px;
+}
+
+.tbh-ab-hub-phone {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1d4386;
+}
+
+/* ---- why purchase from your local dealer ---- */
+.tbh-ab-why {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-ab-why .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ab-why-title {
+    max-width: 960px;
+    color: #0f2547;
+}
+
+.tbh-ab-why-grid {
+    margin-top: 48px;
+}
+
+.tbh-ab-why-col {
+    flex: 0 0 calc((100% - 120px) / 4);
+    max-width: calc((100% - 120px) / 4);
+    margin-right: 40px;
+}
+
+.tbh-ab-why-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-ab-why-num {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 46px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin: 0 0 16px;
+}
+
+.tbh-ab-why-item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 16px;
+}
+
+.tbh-ab-why-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* ============================== */
+/* 12. BLOG / NEWS PAGE — CSS     */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-bl-hero {
+    position: relative;
+    height: 480px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tbh-bl-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-bl-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.8);
+}
+
+.tbh-bl-hero-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-bl-hero .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-bl-hero-title {
+    max-width: 1000px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-bl-hero-para {
+    max-width: 800px;
+    color: #fff;
+}
+
+/* ---- featured article ---- */
+.tbh-bl-featured-sec {
+    background: #fff;
+    padding: 80px 0;
+}
+
+.tbh-bl-featured-sec .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 40px;
+}
+
+.tbh-bl-featured {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 32px;
+}
+
+.tbh-bl-featured-media {
+    flex: 0 0 45.714%;
+    max-width: 45.714%;
+    height: 480px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.tbh-bl-featured-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-bl-featured-text {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-bl-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 20px;
+    border-radius: 20px;
+    background: #1d4386;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.tbh-bl-featured-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-bl-featured-excerpt {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 24px;
+}
+
+.tbh-bl-featured-meta {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+/* ---- category filter tabs ---- */
+.tbh-bl-tabs-sec {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 24px 0;
+}
+
+.tbh-bl-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.tbh-bl-tab {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-bl-tab:hover {
+    color: #1d4386;
+}
+
+.tbh-bl-tab.is-active {
+    background: #1d4386;
+    color: #fff;
+}
+
+.tbh-bl-tab.is-active:hover {
+    color: #fff;
+}
+
+/* ---- article grid ---- */
+.tbh-bl-grid-sec {
+    background: #fff;
+    padding: 48px 0 96px;
+}
+
+.tbh-bl-col {
+    flex: 0 0 calc((100% - 80px) / 3);
+    max-width: calc((100% - 80px) / 3);
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+.tbh-bl-article-grid {
+    margin-bottom: -40px;
+}
+
+.tbh-bl-col:nth-child(3n) {
+    margin-right: 0;
+}
+
+.tbh-bl-card {
+    display: block;
+}
+
+.tbh-bl-card-media {
+    padding-top: 62.5%;
+    /* 16:10 */
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.tbh-bl-card-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.tbh-bl-card:hover .tbh-bl-card-media img {
+    transform: scale(1.04);
+}
+
+.tbh-bl-card-cat {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin: 0 0 12px;
+}
+
+.tbh-bl-card-title {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 12px;
+}
+
+.tbh-bl-card-excerpt {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 12px;
+}
+
+.tbh-bl-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 8px;
+}
+
+.tbh-bl-card-date {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+}
+
+.tbh-bl-card-more {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1d4386;
+    white-space: nowrap;
+}
+
+/* ---- newsletter cta ---- */
+.tbh-bl-news-sec {
+    background: #0f2547;
+    padding: 96px 0;
+    text-align: center;
+}
+
+.tbh-bl-news-sec .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-bl-news-title {
+    max-width: 960px;
+    margin: 0 auto 32px;
+    color: #fff;
+}
+
+.tbh-bl-news-para {
+    max-width: 960px;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.tbh-bl-news-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 48px;
+}
+
+.tbh-bl-news-form input {
+    width: 400px;
+    max-width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+}
+
+.tbh-bl-news-form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tbh-bl-news-form input:focus {
+    outline: none;
+    border-color: #43b2e5;
+}
+
+/* ============================== */
+/* 13. BLOG POST (ARTICLE) PAGE   */
+/* ============================== */
+
+/* narrow reading column used only by the article body */
+.tbh-bp-article-shell {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ---- post hero (bottom-aligned caption) ---- */
+.tbh-bp-hero {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 120px;
+}
+
+.tbh-bp-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-bp-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.55);
+}
+
+.tbh-bp-hero-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-bp-hero-cat {
+    color: #43b2e5;
+    margin-bottom: 16px;
+}
+
+.tbh-bp-hero-title {
+    max-width: 1000px;
+    color: #fff;
+}
+
+/* ---- editorial body ---- */
+.tbh-bp-body-sec {
+    background: #fff;
+    padding: 80px 0 96px;
+}
+
+.tbh-bp-meta {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+}
+
+.tbh-bp-meta-cat {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin: 0 0 16px;
+}
+
+.tbh-bp-byline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 31.5px;
+    color: #0f2547;
+}
+
+.tbh-bp-body p {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+}
+
+.tbh-bp-quote {
+    padding-left: 32px;
+    margin-bottom: 40px;
+}
+
+.tbh-bp-quote-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 31.5px;
+    color: #1d4386;
+    margin: 0 0 8px;
+}
+
+.tbh-bp-quote-cite {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(15, 37, 71, 0.6);
+    font-style: normal;
+}
+
+.tbh-bp-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---- related articles ---- */
+.tbh-bp-related {
+    background: #f4f7fa;
+    padding: 80px 0 120px;
+}
+
+.tbh-bp-related .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 40px;
+}
+
+.tbh-bp-rel-col {
+    flex: 0 0 calc((100% - 80px) / 3);
+    max-width: calc((100% - 80px) / 3);
+    margin-right: 40px;
+}
+
+.tbh-bp-rel-col:last-child {
+    margin-right: 0;
+}
+
+.tbh-bp-rel-card {
+    display: block;
+}
+
+.tbh-bp-rel-media {
+    padding-top: 62.5%;
+    /* 8:5 */
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.tbh-bp-rel-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.tbh-bp-rel-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, 0.1);
+}
+
+.tbh-bp-rel-card:hover .tbh-bp-rel-media img {
+    transform: scale(1.04);
+}
+
+.tbh-bp-rel-cat {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin: 0 0 12px;
+}
+
+.tbh-bp-rel-title {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 12px;
+}
+
+.tbh-bp-rel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.tbh-bp-rel-date {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+}
+
+.tbh-bp-rel-more {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1d4386;
+    white-space: nowrap;
+}
+
+/* ============================== */
+/* 14. EVENTS PAGE — CSS          */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-ev-hero {
+    position: relative;
+    height: 480px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tbh-ev-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-ev-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.8);
+}
+
+.tbh-ev-hero-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-ev-hero .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-ev-hero-title {
+    max-width: 1000px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.tbh-ev-hero-para {
+    max-width: 800px;
+    color: #fff;
+}
+
+/* ---- next event up ---- */
+.tbh-ev-next-sec {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 80px 0;
+}
+
+.tbh-ev-next-sec .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 40px;
+}
+
+.tbh-ev-next {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 40px;
+}
+
+.tbh-ev-next-media {
+    flex: 0 0 45.714%;
+    max-width: 45.714%;
+    height: 480px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.tbh-ev-next-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-ev-next-text {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-ev-date-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: 4px;
+    background: #1d4386;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.tbh-ev-next-title {
+    color: #0f2547;
+    margin-bottom: 20px;
+}
+
+.tbh-ev-next-desc {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+}
+
+.tbh-ev-next-loc {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin: 0 0 8px;
+}
+
+.tbh-ev-next-includes {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000;
+    margin-bottom: 28px;
+}
+
+/* ---- event lineup ---- */
+.tbh-ev-lineup-sec {
+    padding: 64px 0 96px;
+}
+
+.tbh-ev-lineup-sec .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-ev-lineup-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-ev-lineup-sub {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.tbh-ev-list {
+    margin-top: 48px;
+}
+
+.tbh-ev-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 24px 40px 24px 24px;
+    margin-bottom: 40px;
+}
+
+.tbh-ev-card:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-ev-card-media {
+    flex: 0 0 28.571%;
+    max-width: 28.571%;
+    height: 280px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.tbh-ev-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-ev-card-text {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-ev-card-date {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin: 0 0 16px;
+}
+
+.tbh-ev-card-title {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 16px;
+}
+
+.tbh-ev-card-loc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0 0 16px;
+}
+
+.tbh-ev-card-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 16px;
+}
+
+.tbh-ev-card-rsvp {
+    display: inline-block;
+    padding-top: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1d4386;
+}
+
+/* ============================== */
+/* 15. EMPLOYMENT PAGE — CSS      */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-em-hero {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tbh-em-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-em-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.75);
+}
+
+.tbh-em-hero-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tbh-em-hero-title {
+    max-width: 800px;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.tbh-em-hero-para {
+    max-width: 800px;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+/* ---- culture ---- */
+.tbh-em-culture {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-em-culture-text {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-em-culture-media {
+    flex: 0 0 45.714%;
+    max-width: 45.714%;
+    height: 480px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-em-culture-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-em-culture-text .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-em-culture-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-em-culture-desc {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* ---- perks of being on the team ---- */
+.tbh-em-perks {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-em-perks .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-em-perks-grid {
+    margin-top: 48px;
+    margin-bottom: -24px;
+}
+
+.tbh-em-perk-col {
+    flex: 0 0 calc((100% - 72px) / 4);
+    max-width: calc((100% - 72px) / 4);
+    margin-right: 24px;
+    margin-bottom: 24px;
+}
+
+.tbh-em-perk-col:nth-child(4n) {
+    margin-right: 0;
+}
+
+.tbh-em-perk-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 32px;
+}
+
+.tbh-em-perk-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #0f2547;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.tbh-em-perk-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.tbh-em-perk-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 16px;
+}
+
+.tbh-em-perk-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* ---- apply today (form section) ---- */
+.tbh-em-apply {
+    position: relative;
+    overflow: hidden;
+    padding: 96px 0;
+    text-align: center;
+}
+
+.tbh-em-apply-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-em-apply-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.76);
+}
+
+.tbh-em-apply-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.tbh-em-apply .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 12px;
+}
+
+.tbh-em-apply-title {
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.tbh-em-apply-para {
+    max-width: 600px;
+    margin: 0 auto 48px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+}
+
+.tbh-em-form {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 48px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.tbh-em-field-row {
+    display: flex;
+    gap: 24px;
+}
+
+.tbh-em-field {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-em-label {
+    display: block;
+    margin: 0 0 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-em-label .req {
+    color: #43b2e5;
+}
+
+.tbh-em-field input,
+.tbh-em-field textarea {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.tbh-em-field textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.tbh-em-field input::placeholder,
+.tbh-em-field textarea::placeholder {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.tbh-em-field input:focus,
+.tbh-em-field textarea:focus {
+    outline: none;
+    border-color: #43b2e5;
+}
+
+.tbh-em-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 32px;
+    background: #fff;
+    border: 1.5px dashed #1d4386;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.tbh-em-upload img {
+    width: 32px;
+    height: 32px;
+}
+
+.tbh-em-upload-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #1d4386;
+}
+
+.tbh-em-upload-sub {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.tbh-em-submit {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.tbh-em-form-fine {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+/* ============================== */
+/* 16. EVENT DETAILS PAGE — CSS   */
+/* ============================== */
+
+/* ---- hero (bottom-aligned caption) ---- */
+.tbh-ed-hero {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 80px;
+}
+
+.tbh-ed-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.tbh-ed-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(6, 20, 38, 0.6);
+}
+
+.tbh-ed-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 880px;
+}
+
+.tbh-ed-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: 4px;
+    background: #43b2e5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #061426;
+    margin-bottom: 16px;
+}
+
+.tbh-ed-hero-title {
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.tbh-ed-hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.tbh-ed-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tbh-ed-meta-item img {
+    width: 18px;
+    height: 18px;
+}
+
+.tbh-ed-meta-item span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.tbh-ed-meta-dot {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: #43b2e5;
+}
+
+/* ---- event details section ---- */
+.tbh-ed-details-sec {
+    background: #fff;
+    padding: 80px 0;
+}
+
+.tbh-ed-details-row {
+    display: flex;
+    gap: 80px;
+}
+
+.tbh-ed-about {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-ed-about .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-ed-about p:not(.tbh-eyebrow) {
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    line-height: 32px;
+    color: #061426;
+    margin-bottom: 24px;
+}
+
+.tbh-ed-about p:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-ed-card {
+    flex: 0 0 480px;
+    max-width: 480px;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 39px;
+}
+
+.tbh-ed-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+}
+
+.tbh-ed-detail-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #606c7a;
+    margin: 0 0 8px;
+}
+
+.tbh-ed-detail-value {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    color: #0f2547;
+    margin: 0 0 8px;
+}
+
+.tbh-ed-detail-value.tbh-ed-price {
+    font-size: 24px;
+    line-height: 29px;
+    color: #1d4386;
+}
+
+.tbh-ed-detail-value.tbh-ed-limited {
+    color: #d9534f;
+}
+
+.tbh-ed-detail-sub {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #061426;
+}
+
+.tbh-ed-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.tbh-ed-cta .tbh-btn {
+    width: 100%;
+    height: 49px;
+    font-size: 14px;
+}
+
+.tbh-ed-cta-fine {
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    color: #606c7a;
+    text-align: center;
+}
+
+/* ---- past events gallery ---- */
+.tbh-ed-gallery {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-ed-gallery .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ed-gallery-title {
+    color: #0f2547;
+}
+
+.tbh-ed-gallery-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.tbh-ed-gallery-item {
+    flex: 1 0 0;
+    min-width: 0;
+    /* percentage padding would resolve against the flex container's width,
+       so the square is expressed as an aspect ratio instead */
+    aspect-ratio: 1 / 1;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-ed-gallery-item img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* ---- more upcoming events ---- */
+.tbh-ed-similar {
+    background: #fff;
+    padding: 100px 0 120px;
+}
+
+.tbh-ed-similar .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ed-similar-title {
+    color: #0f2547;
+}
+
+.tbh-ed-similar-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 48px;
+}
+
+.tbh-ed-similar-col {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-ed-similar-card {
+    display: block;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.tbh-ed-similar-media {
+    height: 220px;
+}
+
+.tbh-ed-similar-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-ed-similar-body {
+    padding: 23px;
+}
+
+.tbh-ed-similar-date {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin: 0 0 16px;
+}
+
+.tbh-ed-similar-card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin: 0 0 16px;
+}
+
+.tbh-ed-similar-loc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #606c7a;
+    margin: 0 0 16px;
+}
+
+.tbh-ed-similar-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: 'Mulish', sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+    color: #061426;
+    margin: 0 0 16px;
+}
+
+.tbh-ed-similar-rsvp {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1d4386;
+}
+
+/* ---- registration form ---- */
+.tbh-ed-register {
+    background: #0f2547;
+    padding: 96px 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.tbh-ed-register-wrap {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tbh-ed-register-head {
+    text-align: center;
+}
+
+.tbh-ed-register-head .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 16px;
+}
+
+.tbh-ed-register-title {
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.tbh-ed-register-sub {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    opacity: .8;
+}
+
+.tbh-ed-form {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 48px;
+}
+
+.tbh-ed-fg {
+    margin-bottom: 24px;
+}
+
+.tbh-ed-fg-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.tbh-ed-fg-row .tbh-ed-fg {
+    flex: 1 0 0;
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+.tbh-ed-label {
+    display: block;
+    margin: 0 0 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: .8;
+}
+
+.tbh-ed-fg input,
+.tbh-ed-fg select {
+    width: 100%;
+    height: 48px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 0 16px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    color: #061426;
+}
+
+.tbh-ed-fg input::placeholder {
+    color: #827872;
+}
+
+.tbh-ed-fg input:focus,
+.tbh-ed-fg select:focus {
+    outline: none;
+    border-color: #43b2e5;
+}
+
+.tbh-ed-fg select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('../images/event-details/icon-chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px 16px;
+    cursor: pointer;
+}
+
+.tbh-ed-waiver {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 32px;
+    margin-bottom: 32px;
+    cursor: pointer;
+}
+
+.tbh-ed-waiver input {
+    position: absolute;
+    opacity: 0;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.tbh-ed-waiver-box {
+    flex: none;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: #43b2e5;
+}
+
+.tbh-ed-waiver-box img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+}
+
+.tbh-ed-waiver-text {
+    flex: 1 0 0;
+    min-width: 0;
+    font-family: 'Mulish', sans-serif;
+    font-size: 15px;
+    line-height: 19px;
+    color: #fff;
+}
+
+.tbh-ed-submit {
+    width: 100%;
+    height: 54px;
+    margin-bottom: 24px;
+}
+
+.tbh-ed-form-fine {
+    font-family: 'Mulish', sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+    color: #fff;
+    opacity: .7;
+    text-align: center;
+}
+
+/* ============================== */
+/* 17. contact page starts here   */
+/* ============================== */
+
+/* ---- hero banner + message form ---- */
+.tbh-ct-hero {
+    position: relative;
+    padding: 96px 0;
+    overflow: hidden;
+}
+
+.tbh-ct-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-ct-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, .8);
+}
+
+.tbh-ct-hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+.tbh-ct-hero-text {
+    width: 720px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.tbh-ct-hero-title {
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.tbh-ct-hero-sub {
+    color: rgba(255, 255, 255, .8);
+}
+
+.tbh-ct-card {
+    width: 720px;
+    max-width: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 47px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.tbh-ct-card-head .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 16px;
+}
+
+.tbh-ct-card-title {
+    color: #0f2547;
+}
+
+/* ---- message form fields ---- */
+.tbh-ct-fg {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tbh-ct-label {
+    display: flex;
+    gap: 4px;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-ct-req {
+    color: #43b2e5;
+}
+
+.tbh-ct-fg input,
+.tbh-ct-fg select,
+.tbh-ct-fg textarea {
+    display: block;
+    width: 100%;
+    height: 48px;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, .8);
+}
+
+.tbh-ct-fg textarea {
+    height: 160px;
+    padding: 11px 15px;
+    resize: vertical;
+    overflow: auto;
+}
+
+.tbh-ct-fg input::placeholder,
+.tbh-ct-fg textarea::placeholder {
+    color: rgba(0, 0, 0, .8);
+}
+
+.tbh-ct-fg input:focus,
+.tbh-ct-fg select:focus,
+.tbh-ct-fg textarea:focus {
+    outline: none;
+    border-color: #43b2e5;
+}
+
+.tbh-ct-fg select {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #0f2547;
+    background-image: url('../images/contact/icon-chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px 8px;
+    cursor: pointer;
+}
+
+/* two fields per row with a 24px gutter, exact at any container width */
+.tbh-ct-col {
+    flex: 0 0 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+}
+
+.tbh-ct-submit {
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+}
+
+/* ---- dealership locations ---- */
+.tbh-ct-loc {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-ct-loc-head {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.tbh-ct-loc-head .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ct-loc-title {
+    color: #0f2547;
+}
+
+/* two cards per row with a 40px gutter */
+.tbh-ct-loc-col {
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+}
+
+.tbh-ct-loc-card {
+    height: 100%;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 39px;
+}
+
+.tbh-ct-loc-name {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-ct-loc-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.tbh-ct-loc-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tbh-ct-loc-line img {
+    flex: none;
+    width: 20px;
+    height: 20px;
+}
+
+.tbh-ct-loc-addr {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #0f2547;
+}
+
+.tbh-ct-loc-phone {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 31.5px;
+    color: #0f2547;
+}
+
+.tbh-ct-loc-hours {
+    align-items: flex-start;
+}
+
+.tbh-ct-loc-hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tbh-ct-loc-hours-list p {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, .8);
+}
+
+.tbh-ct-map {
+    height: 220px;
+    border-radius: 6px;
+    background: #c4c4c4;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.tbh-ct-loc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: #1d4386;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fff;
+    transition: background-color .25s ease;
+}
+
+.tbh-ct-loc-btn:hover {
+    background: #0f2547;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* ============================== */
+/* 18. reviews page starts here   */
+/* ============================== */
+
+/* ---- hero banner ---- */
+.tbh-rv-hero {
+    position: relative;
+    height: 480px;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.tbh-rv-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-rv-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, .75);
+}
+
+.tbh-rv-hero-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    text-align: center;
+}
+
+.tbh-rv-hero-title,
+.tbh-rv-hero-sub {
+    width: 720px;
+    max-width: 100%;
+    color: #fff;
+}
+
+/* ---- google rating summary ---- */
+.tbh-rv-rating {
+    background: #061426;
+    padding: 64px 0;
+}
+
+.tbh-rv-rating-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.tbh-rv-rating .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-rv-score-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.tbh-rv-score {
+    color: #fff;
+}
+
+.tbh-rv-score-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tbh-rv-stars {
+    display: flex;
+    gap: 4px;
+}
+
+.tbh-rv-stars img {
+    width: 18px;
+    height: 18px;
+}
+
+.tbh-rv-based {
+    color: rgba(255, 255, 255, .8);
+}
+
+/* ---- sort bar ---- */
+.tbh-rv-sort {
+    background: #f4f7fa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 23px 0;
+}
+
+.tbh-rv-sort-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tbh-rv-sort-title {
+    color: #0f2547;
+}
+
+.tbh-rv-sort-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tbh-rv-sort-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, .8);
+}
+
+.tbh-rv-sort-select {
+    width: 175px;
+    height: 36px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 0 33px 0 15px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #0f2547;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('../images/reviews/icon-chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 10px 6px;
+    cursor: pointer;
+}
+
+.tbh-rv-sort-select:focus {
+    outline: none;
+    border-color: #43b2e5;
+}
+
+/* ---- review cards grid ---- */
+.tbh-rv-grid {
+    background: #fff;
+    padding: 80px 0 96px;
+}
+
+/* negative margin absorbs the last row's card gutter */
+.tbh-rv-row {
+    margin-bottom: -24px;
+}
+
+.tbh-rv-col {
+    flex: 0 0 calc(33.3333% - 16px);
+    max-width: calc(33.3333% - 16px);
+    margin-bottom: 24px;
+}
+
+.tbh-rv-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 31px;
+}
+
+.tbh-rv-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.tbh-rv-date {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, .8);
+}
+
+.tbh-rv-quote {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #0f2547;
+    margin-bottom: 16px;
+}
+
+.tbh-rv-author {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+/* ---- write a review cta ---- */
+.tbh-rv-cta {
+    background: #0f2547;
+    padding: 96px 0;
+    text-align: center;
+}
+
+.tbh-rv-cta-title {
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.tbh-rv-cta-sub {
+    width: 960px;
+    max-width: 100%;
+    margin: 0 auto 24px;
+    color: #fff;
+    opacity: .8;
+}
+
+.tbh-rv-cta-btn {
+    height: 52px;
+    padding: 0 32px;
+    border-radius: 4px;
+}
+
+/* ============================== */
+/* 19. faq page starts here       */
+/* ============================== */
+
+/* ---- hero banner ---- */
+.tbh-fq-hero {
+    position: relative;
+    height: 400px;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+/* figma crops the fill to the upper third of the photo, not its centre */
+.tbh-fq-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 19.37%;
+}
+
+.tbh-fq-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, .75);
+}
+
+.tbh-fq-hero-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    text-align: center;
+}
+
+.tbh-fq-hero-title {
+    width: 880px;
+    max-width: 100%;
+    color: #fff;
+}
+
+.tbh-fq-hero-sub {
+    width: 880px;
+    max-width: 100%;
+    color: rgba(255, 255, 255, .8);
+}
+
+/* ---- category filter tabs ---- */
+.tbh-fq-tabs {
+    background: #061426;
+    padding: 32px 0;
+}
+
+.tbh-fq-tabs-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.tbh-fq-tab {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 200px;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.tbh-fq-tab:hover {
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+}
+
+.tbh-fq-tab.is-active,
+.tbh-fq-tab.is-active:hover {
+    background: #43b2e5;
+    color: #061426;
+}
+
+/* ---- accordion list ---- */
+.tbh-fq-list {
+    background: #fff;
+    padding: 80px 0 96px;
+}
+
+.tbh-fq-rows {
+    width: 1000px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.tbh-fq-row {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 23px;
+    margin-bottom: 16px;
+}
+
+.tbh-fq-row:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-fq-row.is-open {
+    background: #f4f7fa;
+}
+
+.tbh-fq-q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    border: none;
+    background: none;
+    text-align: left;
+}
+
+.tbh-fq-q p {
+    flex: 1 0 0;
+    min-width: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-fq-q img {
+    flex: none;
+    width: 18px;
+    height: 18px;
+}
+
+.tbh-fq-icon-minus {
+    display: none;
+}
+
+.tbh-fq-row.is-open .tbh-fq-icon-minus {
+    display: block;
+}
+
+.tbh-fq-row.is-open .tbh-fq-icon-plus {
+    display: none;
+}
+
+.tbh-fq-a {
+    display: none;
+    padding-top: 12px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, .8);
+}
+
+.tbh-fq-row.is-open .tbh-fq-a {
+    display: block;
+}
+
+/* ---- still have questions cta ---- */
+.tbh-fq-cta {
+    background: #0f2547;
+    padding: 96px 0;
+    text-align: center;
+}
+
+.tbh-fq-cta-title {
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.tbh-fq-cta-sub {
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto 24px;
+    color: #fff;
+    opacity: .8;
+}
+
+.tbh-fq-cta-btn {
+    height: 52px;
+    padding: 0 32px;
+    border-radius: 4px;
+}
+
+/* ============================== */
+/* 20. supra brand page starts    */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-sp-hero {
+    position: relative;
+    height: 720px;
+    padding: 160px 0;
+    overflow: hidden;
+}
+
+.tbh-sp-hero-bg,
+.tbh-sp-life-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-sp-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, .8);
+}
+
+.tbh-sp-hero-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+}
+
+.tbh-sp-hero-stack {
+    width: 720px;
+    max-width: 100%;
+}
+
+.tbh-sp-hero-stack .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 16px;
+}
+
+.tbh-sp-hero-title {
+    color: #fff;
+}
+
+.tbh-sp-hero-sub {
+    width: 720px;
+    max-width: 100%;
+    color: #fff;
+}
+
+.tbh-sp-hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* figma sizes these ctas from 32/16 padding rather than the 48px default */
+.tbh-sp-btn {
+    height: 52px;
+    padding: 0 32px;
+}
+
+.tbh-sp-btn-outline {
+    border-width: 2px;
+    padding: 0 30px;
+}
+
+/* ---- brand story ---- */
+.tbh-sp-story {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-sp-story-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.tbh-sp-story-text {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-sp-story-text .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-sp-story-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-sp-story-para {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+    margin-bottom: 24px;
+}
+
+.tbh-sp-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-top: 16px;
+}
+
+.tbh-sp-badge-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #1d4386;
+    margin-bottom: 4px;
+}
+
+.tbh-sp-badge-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000;
+    opacity: .6;
+}
+
+.tbh-sp-story-media,
+.tbh-sp-tech-media {
+    flex: 0 0 640px;
+    max-width: 640px;
+    height: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-sp-story-media img,
+.tbh-sp-tech-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* figma anchors this fill to the right edge, not the centre */
+.tbh-sp-story-media img {
+    object-position: right center;
+}
+
+/* ---- section headers shared by the centred sections ---- */
+.tbh-sp-head {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.tbh-sp-head .tbh-eyebrow {
+    margin-bottom: 16px;
+}
+
+/* ---- model lineup ---- */
+.tbh-sp-lineup {
+    background: #061426;
+    padding: 120px 0;
+}
+
+.tbh-sp-lineup .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-sp-lineup-title {
+    color: #fff;
+}
+
+/* figma pins the grid at 534 while the cards sit at 540, so the cards
+   overhang by 6px; released below 1200 where the cards must reflow */
+.tbh-sp-models-row {
+    height: 534px;
+}
+
+.tbh-sp-model-col {
+    flex: 0 0 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+}
+
+.tbh-sp-model-card {
+    height: 540px;
+    background: #0f2547;
+    border-radius: 8px;
+    padding: 32px;
+}
+
+.tbh-sp-model-media {
+    height: 320px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.tbh-sp-model-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-sp-model-media-s img {
+    object-position: center 98.7%;
+}
+
+/* figma zooms this fill 1.28x past cover and nudges it right */
+.tbh-sp-model-media-r img {
+    transform: translateX(6.45%) scale(1.2774);
+}
+
+.tbh-sp-model-titlerow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 8px;
+}
+
+.tbh-sp-model-name {
+    color: #fff;
+}
+
+.tbh-sp-model-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #43b2e5;
+    white-space: nowrap;
+}
+
+.tbh-sp-model-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, .6);
+}
+
+/* ---- why supra ---- */
+.tbh-sp-why {
+    background: #fff;
+    padding: 120px 0;
+}
+
+.tbh-sp-why .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-sp-why-title {
+    color: #0f2547;
+}
+
+/* negative margin absorbs the last row's card gutter */
+.tbh-sp-feat-row {
+    margin-bottom: -40px;
+}
+
+.tbh-sp-feat-col {
+    flex: 0 0 calc(25% - 30px);
+    max-width: calc(25% - 30px);
+    margin-bottom: 40px;
+}
+
+.tbh-sp-feat-card {
+    height: 100%;
+    background: #f4f7fa;
+    border-radius: 4px;
+    padding: 40px;
+}
+
+.tbh-sp-feat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    background: #0f2547;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tbh-sp-feat-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.tbh-sp-feat-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin-bottom: 20px;
+}
+
+.tbh-sp-feat-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+}
+
+/* ---- technology spotlight ---- */
+.tbh-sp-tech {
+    background: #0f2547;
+    padding: 96px 0;
+}
+
+.tbh-sp-tech-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.tbh-sp-tech-info {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-sp-tech-info .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 24px;
+}
+
+.tbh-sp-tech-title {
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.tbh-sp-tech-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tbh-sp-tech-item {
+    display: flex;
+    gap: 16px;
+}
+
+.tbh-sp-tech-item img {
+    flex: none;
+    width: 20px;
+    height: 20px;
+}
+
+.tbh-sp-tech-item-body {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-sp-tech-item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.tbh-sp-tech-item-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, .6);
+}
+
+/* ---- awards strip ---- */
+.tbh-sp-awards {
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 79px 0;
+}
+
+.tbh-sp-awards .tbh-eyebrow {
+    color: #1d4386;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tbh-sp-awards-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.tbh-sp-award {
+    width: 260px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, .08));
+}
+
+.tbh-sp-award p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #061426;
+    text-align: center;
+}
+
+/* ---- lifestyle banner ---- */
+.tbh-sp-life {
+    position: relative;
+    height: 600px;
+    padding: 160px 0;
+    overflow: hidden;
+}
+
+/* figma pulls this fill well below centre */
+.tbh-sp-life-bg {
+    object-position: center 75.95%;
+}
+
+.tbh-sp-life-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, .4);
+}
+
+.tbh-sp-life-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+}
+
+.tbh-sp-life .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-sp-life-title {
+    width: 760px;
+    max-width: 100%;
+    color: #fff;
+}
+
+/* ---- available inventory ---- */
+.tbh-sp-inv {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-sp-inv .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-sp-inv-title {
+    color: #0f2547;
+}
+
+.tbh-sp-inv-row {
+    margin-bottom: -40px;
+}
+
+.tbh-sp-inv-col {
+    flex: 0 0 calc(33.3333% - 26.6667px);
+    max-width: calc(33.3333% - 26.6667px);
+    margin-bottom: 40px;
+}
+
+.tbh-sp-inv-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 23px;
+}
+
+.tbh-sp-inv-media {
+    height: 240px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.tbh-sp-inv-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-sp-inv-body {
+    margin-bottom: 20px;
+}
+
+.tbh-sp-inv-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin-bottom: 8px;
+}
+
+.tbh-sp-inv-name {
+    color: #0f2547;
+    margin-bottom: 8px;
+}
+
+.tbh-sp-inv-spec {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000;
+    opacity: .6;
+}
+
+.tbh-sp-inv-foot {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 11px;
+}
+
+.tbh-sp-inv-price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-sp-inv-btn {
+    height: 40px;
+    padding: 0 20px;
+}
+
+.tbh-sp-inv-all {
+    margin-top: 48px;
+    padding-top: 16px;
+    text-align: center;
+}
+
+.tbh-sp-inv-all .tbh-btn {
+    height: 52px;
+    padding: 0 36px;
+}
+
+/* ---- schedule a demo ---- */
+.tbh-sp-demo {
+    background: #0f2547;
+    padding: 96px 0;
+    text-align: center;
+}
+
+.tbh-sp-demo .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 32px;
+}
+
+.tbh-sp-demo-title {
+    width: 900px;
+    max-width: 100%;
+    margin: 0 auto 32px;
+    color: #fff;
+}
+
+.tbh-sp-demo-sub {
+    width: 960px;
+    max-width: 100%;
+    margin: 0 auto 32px;
+    color: #fff;
+    opacity: .8;
+}
+
+.tbh-sp-demo-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding-top: 16px;
+}
+
+.tbh-sp-demo-outline {
+    border-color: rgba(255, 255, 255, .2);
+}
+
+/* ============================== */
+/* 21. sell / trade page starts   */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-st-hero {
+    position: relative;
+    height: 840px;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.tbh-st-hero-bg,
+.tbh-st-val-bg,
+.tbh-st-fcta-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-st-hero-overlay,
+.tbh-st-fcta-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, .8);
+}
+
+.tbh-st-hero-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.tbh-st-hero-content {
+    width: 960px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.tbh-st-hero-content .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-st-hero-title,
+.tbh-st-hero-sub {
+    color: #fff;
+}
+
+.tbh-st-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: 12px;
+}
+
+/* figma sizes these ctas from 32/16 padding and a 4px radius */
+.tbh-st-btn {
+    height: 52px;
+    padding: 0 32px;
+    border-radius: 4px;
+}
+
+.tbh-st-btn-outline {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 0 30px;
+}
+
+.tbh-st-btn-outline:hover {
+    background: #fff;
+    color: #0f2547;
+}
+
+/* ---- shared centred section header ---- */
+.tbh-st-head {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.tbh-st-head .tbh-eyebrow {
+    margin-bottom: 16px;
+}
+
+.tbh-st-head-title {
+    margin-bottom: 16px;
+}
+
+.tbh-st-head-title:last-child {
+    margin-bottom: 0;
+}
+
+/* ---- how it works ---- */
+.tbh-st-how {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-st-how .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-st-how .tbh-st-head-title {
+    color: #0f2547;
+}
+
+.tbh-st-how-sub {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+}
+
+/* negative margin absorbs the last row's card gutter */
+.tbh-st-row-32 {
+    margin-bottom: -32px;
+}
+
+.tbh-st-col-3 {
+    flex: 0 0 calc(33.3333% - 21.3333px);
+    max-width: calc(33.3333% - 21.3333px);
+    margin-bottom: 32px;
+}
+
+.tbh-st-step {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 39px;
+}
+
+.tbh-st-step-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.tbh-st-step-num {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 50px;
+    color: #43b2e5;
+}
+
+.tbh-st-step-icon {
+    flex: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    background: #f4f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tbh-st-step-icon img {
+    width: 28px;
+    height: 28px;
+}
+
+.tbh-st-step-title {
+    color: #0f2547;
+    margin-bottom: 12px;
+}
+
+.tbh-st-step-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+}
+
+/* ---- why sell with us ---- */
+.tbh-st-why {
+    background: #061426;
+    padding: 96px 0;
+}
+
+.tbh-st-why-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.tbh-st-why-left {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-st-why-left .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 16px;
+}
+
+.tbh-st-why-title {
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.tbh-st-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tbh-st-benefit {
+    display: flex;
+    gap: 20px;
+}
+
+.tbh-st-benefit-icon {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    background: #1d4386;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tbh-st-benefit-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.tbh-st-benefit-body {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-st-benefit-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.tbh-st-benefit-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, .8);
+}
+
+.tbh-st-why-media {
+    position: relative;
+    flex: 1 0 0;
+    min-width: 0;
+    height: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-st-why-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-st-why-tag {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    background: #43b2e5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #061426;
+}
+
+/* ---- trade-in comparison ---- */
+.tbh-st-trade {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-st-trade-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 48px;
+}
+
+.tbh-st-trade-headtext {
+    width: 700px;
+    max-width: 100%;
+}
+
+.tbh-st-trade-headtext .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-st-trade-title {
+    color: #0f2547;
+}
+
+.tbh-st-trade-btn {
+    flex: none;
+    height: 48px;
+    padding: 0 28px;
+    border-radius: 4px;
+}
+
+.tbh-st-row-40 {
+    margin-bottom: -40px;
+}
+
+.tbh-st-col-2 {
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+    margin-bottom: 40px;
+}
+
+.tbh-st-trade-card {
+    height: 100%;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-st-trade-media {
+    height: 320px;
+    margin-bottom: 24px;
+}
+
+.tbh-st-trade-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* flex column blockifies the badge, so no inline line-box leading is added */
+.tbh-st-trade-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 31px 30px;
+}
+
+.tbh-st-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.tbh-st-badge-current {
+    background: rgba(6, 20, 38, .1);
+    color: #061426;
+}
+
+.tbh-st-badge-target {
+    background: rgba(67, 178, 229, .2);
+    color: #1d4386;
+}
+
+.tbh-st-trade-name {
+    color: #0f2547;
+    margin-bottom: 16px;
+}
+
+.tbh-st-trade-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .7;
+}
+
+/* ---- pricing tiers ---- */
+.tbh-st-pricing {
+    background: #061426;
+    padding: 96px 0;
+}
+
+.tbh-st-pricing .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-st-pricing .tbh-st-head-title {
+    color: #fff;
+}
+
+/* figma aligns the tiers to the top, so only the featured card is taller */
+.tbh-st-tier {
+    background: rgba(10, 26, 48, .6);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 8px;
+    padding: 47px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tbh-st-tier-featured {
+    background: #0f2547;
+    border: 2px solid #43b2e5;
+    padding: 46px;
+}
+
+.tbh-st-tier-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .8);
+    margin-bottom: 8px;
+}
+
+.tbh-st-tier-featured .tbh-st-tier-label {
+    color: #43b2e5;
+}
+
+.tbh-st-tier-price {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 50px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.tbh-st-tier-sub {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+    opacity: .6;
+}
+
+.tbh-st-tier-divider {
+    display: block;
+    height: 1px;
+    background: rgba(255, 255, 255, .12);
+    margin: 32px 0;
+}
+
+.tbh-st-feats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.tbh-st-feat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tbh-st-feat-icon {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tbh-st-feat-icon img {
+    width: 14px;
+    height: 14px;
+}
+
+.tbh-st-feat p {
+    flex: 1 0 0;
+    min-width: 0;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, .8);
+}
+
+.tbh-st-tier-btn {
+    margin-top: auto;
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+}
+
+.tbh-st-tier-btn-ghost {
+    background: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .6);
+    color: #fff;
+}
+
+.tbh-st-tier-btn-ghost:hover {
+    background: rgba(255, 255, 255, .2);
+    color: #fff;
+}
+
+/* ---- testimonials ---- */
+.tbh-st-quotes {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-st-quotes .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-st-quotes .tbh-st-head-title {
+    color: #0f2547;
+}
+
+.tbh-st-quote {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 39px;
+}
+
+.tbh-st-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+}
+
+.tbh-st-stars img {
+    width: 16px;
+    height: 16px;
+}
+
+.tbh-st-quote-text {
+    font-family: 'Mulish', sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000;
+    margin-bottom: 24px;
+}
+
+.tbh-st-quote-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 17px;
+    color: #0f2547;
+    margin-bottom: 2px;
+}
+
+.tbh-st-quote-role {
+    font-family: 'Mulish', sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, .6);
+}
+
+/* ---- valuation form ---- */
+.tbh-st-val {
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.tbh-st-val-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, .85);
+}
+
+.tbh-st-val-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.tbh-st-val-head {
+    width: 800px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.tbh-st-val-head .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 12px;
+}
+
+.tbh-st-val-title {
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.tbh-st-val-sub {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, .8);
+}
+
+.tbh-st-val-card {
+    width: 760px;
+    max-width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 48px;
+}
+
+.tbh-st-val-card-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-st-fields {
+    margin-bottom: 24px;
+}
+
+.tbh-st-fg {
+    margin-bottom: 16px;
+}
+
+.tbh-st-fields>.row {
+    margin-bottom: 16px;
+}
+
+.tbh-st-fields>.row .tbh-st-fg {
+    margin-bottom: 0;
+}
+
+.tbh-st-fg:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-st-fg label {
+    display: block;
+    margin: 0 0 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-st-fg input,
+.tbh-st-fg select {
+    display: block;
+    width: 100%;
+    height: 48px;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    color: rgba(0, 0, 0, .8);
+}
+
+.tbh-st-fg input::placeholder {
+    color: rgba(0, 0, 0, .6);
+}
+
+.tbh-st-fg input:focus,
+.tbh-st-fg select:focus {
+    outline: none;
+    border-color: #43b2e5;
+}
+
+.tbh-st-fg select {
+    appearance: none;
+    -webkit-appearance: none;
+    color: rgba(0, 0, 0, .6);
+    cursor: pointer;
+}
+
+.tbh-st-col-half {
+    flex: 0 0 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+}
+
+.tbh-st-val-submit {
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+}
+
+/* ---- seller faq accordion ---- */
+.tbh-st-faq {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-st-faq .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-st-faq .tbh-st-head-title {
+    color: #0f2547;
+}
+
+.tbh-st-faq-head {
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto 48px;
+}
+
+.tbh-st-faq-rows {
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.tbh-st-faq-row {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 31px;
+    margin-bottom: 16px;
+}
+
+.tbh-st-faq-row:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-st-faq-q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    border: none;
+    background: none;
+    text-align: left;
+}
+
+.tbh-st-faq-q p {
+    flex: 1 0 0;
+    min-width: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-st-faq-q img {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    transition: transform .3s ease;
+}
+
+/* rows ship open with the chevron pointing down, as designed;
+   it flips only once a visitor collapses the row */
+.tbh-st-faq-row:not(.is-open) .tbh-st-faq-q img {
+    transform: rotate(180deg);
+}
+
+.tbh-st-faq-a {
+    display: none;
+    padding-top: 12px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+}
+
+.tbh-st-faq-row.is-open .tbh-st-faq-a {
+    display: block;
+}
+
+/* ---- final cta banner ---- */
+.tbh-st-fcta {
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.tbh-st-fcta-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+}
+
+.tbh-st-fcta .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-st-fcta-title {
+    color: #fff;
+}
+
+.tbh-st-fcta-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding-top: 16px;
+}
+
+.tbh-st-fcta-ctas .tbh-btn {
+    height: 52px;
+    padding: 0 36px;
+    border-radius: 4px;
+}
+
+.tbh-st-fcta-ctas .tbh-st-btn-outline {
+    padding: 0 34px;
+}
+
+/* ============================== */
+/* 22. pro shop page starts here  */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-ps-hero {
+    position: relative;
+    height: 760px;
+    padding: 160px 0;
+    overflow: hidden;
+}
+
+.tbh-ps-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-ps-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, .8);
+}
+
+.tbh-ps-hero-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+}
+
+.tbh-ps-hero .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-ps-hero-title {
+    color: #fff;
+}
+
+.tbh-ps-hero-sub {
+    width: 800px;
+    max-width: 100%;
+    color: #fff;
+}
+
+.tbh-ps-hero-cta {
+    padding-top: 16px;
+}
+
+.tbh-ps-btn {
+    height: 52px;
+    padding: 0 32px;
+    border-radius: 4px;
+}
+
+/* ---- featured categories ---- */
+.tbh-ps-cats {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-ps-cats-head {
+    margin-bottom: 48px;
+}
+
+.tbh-ps-cats-head .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-ps-cats-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-ps-lead {
+    width: 800px;
+    max-width: 100%;
+    color: #000;
+    opacity: .8;
+}
+
+/* negative margin absorbs the last row's card gutter */
+.tbh-ps-cat-row {
+    margin-bottom: -24px;
+}
+
+.tbh-ps-cat-col {
+    flex: 0 0 calc(33.3333% - 16px);
+    max-width: calc(33.3333% - 16px);
+    margin-bottom: 24px;
+}
+
+.tbh-ps-cat-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 31px;
+}
+
+.tbh-ps-cat-media {
+    height: 220px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.tbh-ps-cat-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* figma pulls this fill up towards the top of the frame */
+.tbh-ps-cat-media-boards img {
+    object-position: center 6.2%;
+}
+
+.tbh-ps-cat-title {
+    color: #0f2547;
+    margin-bottom: 8px;
+}
+
+.tbh-ps-cat-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, .8);
+}
+
+/* ---- best sellers ---- */
+.tbh-ps-best {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-ps-best-head {
+    margin-bottom: 48px;
+}
+
+.tbh-ps-best-head .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ps-best-title {
+    color: #0f2547;
+}
+
+.tbh-ps-prod-row {
+    margin-bottom: -24px;
+}
+
+.tbh-ps-prod-col {
+    flex: 0 0 calc(25% - 18px);
+    max-width: calc(25% - 18px);
+    margin-bottom: 24px;
+}
+
+.tbh-ps-prod-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 23px;
+}
+
+.tbh-ps-prod-media {
+    height: 280px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.tbh-ps-prod-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-ps-prod-media-contain img {
+    object-fit: contain;
+}
+
+.tbh-ps-prod-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tbh-ps-prod-desc {
+    height: 40px;
+    overflow: hidden;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, .6);
+}
+
+.tbh-ps-best-cta {
+    margin-top: 48px;
+    text-align: right;
+}
+
+.tbh-ps-best-cta .tbh-btn {
+    height: 44px;
+    padding: 0 24px;
+    border-radius: 4px;
+}
+
+/* ---- why shop with us ---- */
+.tbh-ps-adv {
+    background: #0f2547;
+    padding: 96px 0;
+}
+
+.tbh-ps-adv-head {
+    margin-bottom: 48px;
+}
+
+.tbh-ps-adv-head .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 16px;
+}
+
+.tbh-ps-adv-title {
+    color: #fff;
+}
+
+.tbh-ps-adv-row {
+    margin-bottom: -40px;
+}
+
+.tbh-ps-adv-col {
+    flex: 0 0 calc(33.3333% - 26.6667px);
+    max-width: calc(33.3333% - 26.6667px);
+    margin-bottom: 40px;
+}
+
+.tbh-ps-adv-card {
+    height: 100%;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid #1d4386;
+    border-radius: 4px;
+    padding: 39px;
+}
+
+.tbh-ps-adv-num {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 46px;
+    letter-spacing: -1px;
+    color: #43b2e5;
+    margin-bottom: 20px;
+}
+
+.tbh-ps-adv-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.tbh-ps-adv-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    opacity: .8;
+}
+
+/* ---- authorized brands strip ---- */
+.tbh-ps-brands {
+    border-top: 1px solid #e5e5e5;
+    padding: 95px 0 96px;
+}
+
+.tbh-ps-brands .tbh-eyebrow {
+    color: #1d4386;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+/* the six 220px tiles are wider than the 1400 column, exactly as in figma;
+   the full-bleed wrapper lets them centre at desktop and scroll below that */
+.tbh-ps-brands-scroll {
+    overflow-x: auto;
+}
+
+.tbh-ps-brands-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: max-content;
+    min-width: 100%;
+    padding: 0 40px;
+}
+
+.tbh-ps-brand {
+    flex: none;
+    width: 220px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+}
+
+.tbh-ps-brand img {
+    width: 160px;
+    height: 64px;
+    object-fit: contain;
+}
+
+/* ---- locations ---- */
+.tbh-ps-loc {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-ps-loc-head {
+    margin-bottom: 48px;
+}
+
+.tbh-ps-loc-head .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 16px;
+}
+
+.tbh-ps-loc-title {
+    color: #0f2547;
+    margin-bottom: 16px;
+}
+
+.tbh-ps-loc-row {
+    margin-bottom: -24px;
+}
+
+.tbh-ps-loc-col {
+    flex: 0 0 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+    margin-bottom: 24px;
+}
+
+.tbh-ps-loc-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 31px;
+}
+
+.tbh-ps-loc-photo {
+    height: 260px;
+    border-radius: 4px;
+    background: #c4c4c4;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.tbh-ps-loc-name {
+    color: #0f2547;
+    margin-bottom: 4px;
+}
+
+.tbh-ps-loc-addr {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, .8);
+    margin-bottom: 16px;
+}
+
+.tbh-ps-loc-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #1d4386;
+    margin-bottom: 4px;
+}
+
+.tbh-ps-loc-value {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #0f2547;
+    margin-bottom: 16px;
+}
+
+.tbh-ps-loc-value:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================== */
+/* 23. location page starts here  */
+/* ============================== */
+
+/* ---- hero ---- */
+.tbh-loc-hero {
+    position: relative;
+    height: 720px;
+    padding: 180px 0;
+    overflow: hidden;
+}
+
+.tbh-loc-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tbh-loc-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 20, 38, .75);
+}
+
+.tbh-loc-hero-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.tbh-loc-hero-content {
+    width: 1100px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.tbh-loc-hero-content .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-loc-hero-title {
+    color: #fff;
+}
+
+.tbh-loc-hero-sub {
+    width: 800px;
+    max-width: 100%;
+    color: #fff;
+}
+
+.tbh-loc-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: 12px;
+}
+
+.tbh-loc-btn {
+    height: 52px;
+    padding: 0 32px;
+    border-radius: 4px;
+}
+
+.tbh-loc-btn-outline {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 0 30px;
+}
+
+.tbh-loc-btn-outline:hover {
+    background: #fff;
+    color: #0f2547;
+}
+
+/* ---- overview ---- */
+.tbh-loc-overview {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-loc-overview-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.tbh-loc-overview-text {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-loc-overview-text .tbh-eyebrow {
+    color: #1d4386;
+    margin-bottom: 24px;
+}
+
+.tbh-loc-overview-title {
+    color: #0f2547;
+    margin-bottom: 24px;
+}
+
+.tbh-loc-overview-para {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+    margin-bottom: 24px;
+}
+
+.tbh-loc-overview-para:last-child {
+    margin-bottom: 0;
+}
+
+.tbh-loc-facility {
+    flex: 1 0 0;
+    min-width: 0;
+    height: 600px;
+    border-radius: 8px;
+    background: #c4c4c4;
+    cursor: pointer;
+}
+
+/* ---- contact cards ---- */
+.tbh-loc-contact {
+    background: #0f2547;
+    padding: 96px 0 0;
+}
+
+.tbh-loc-contact-col {
+    flex: 0 0 calc(33.3333% - 21.3333px);
+    max-width: calc(33.3333% - 21.3333px);
+    margin-bottom: 32px;
+}
+
+.tbh-loc-contact-row {
+    margin-bottom: -32px;
+}
+
+/* figma pins the body copy directly under the header with no gap, inside a
+   fixed-height card — shorter cards just leave blank space below */
+.tbh-loc-contact-card {
+    height: 176px;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 8px;
+    padding: 39px;
+}
+
+.tbh-loc-contact-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tbh-loc-icon {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    background: #1d4386;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tbh-loc-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+.tbh-loc-contact-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* the body copy lines up under the label, not under the icon */
+.tbh-loc-contact-body {
+    padding-left: 64px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, .8);
+}
+
+.tbh-loc-contact-phone {
+    padding-left: 64px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #fff;
+}
+
+/* ---- map + directions ---- */
+.tbh-loc-map {
+    background: #0f2547;
+    padding: 48px 0 96px;
+}
+
+.tbh-loc-map-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.tbh-loc-map-area {
+    flex: 1 0 0;
+    min-width: 0;
+    height: 440px;
+    background: #061426;
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.tbh-loc-map-area img {
+    width: 48px;
+    height: 48px;
+}
+
+.tbh-loc-map-label {
+    color: #fff;
+}
+
+.tbh-loc-dir {
+    flex: 1 0 0;
+    min-width: 0;
+}
+
+.tbh-loc-dir .tbh-eyebrow {
+    color: #43b2e5;
+    margin-bottom: 24px;
+}
+
+.tbh-loc-dir-title {
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.tbh-loc-dir-para {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, .8);
+    margin-bottom: 24px;
+}
+
+.tbh-loc-dir-btn {
+    height: 44px;
+    padding: 0 24px;
+    border-radius: 4px;
+}
+
+/* ---- shared centred section header ---- */
+.tbh-loc-head {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.tbh-loc-head .tbh-eyebrow {
+    margin-bottom: 16px;
+}
+
+/* ---- facility gallery mosaic ---- */
+.tbh-loc-gallery {
+    background: #fff;
+    padding: 96px 0;
+}
+
+.tbh-loc-gallery .tbh-eyebrow {
+    color: #1d4386;
+}
+
+.tbh-loc-gallery-title {
+    color: #0f2547;
+}
+
+/* a non-uniform mosaic: one tall tile, two squares, one wide tile */
+.tbh-loc-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, 292px);
+    gap: 16px;
+}
+
+.tbh-loc-gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tbh-loc-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.tbh-loc-gallery-item-tall {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.tbh-loc-gallery-item-wide {
+    grid-column: span 2;
+}
+
+/* ---- services ---- */
+.tbh-loc-services {
+    background: #061426;
+    padding: 96px 0;
+}
+
+.tbh-loc-services .tbh-eyebrow {
+    color: #43b2e5;
+}
+
+.tbh-loc-services-title {
+    color: #fff;
+}
+
+.tbh-loc-svc-row {
+    margin-bottom: -24px;
+}
+
+.tbh-loc-svc-col {
+    flex: 0 0 calc(25% - 18px);
+    max-width: calc(25% - 18px);
+    margin-bottom: 24px;
+}
+
+.tbh-loc-svc-card {
+    height: 100%;
+    background: rgba(10, 26, 48, .6);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 8px;
+    padding: 31px;
+}
+
+.tbh-loc-svc-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    background: #1d4386;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.tbh-loc-svc-icon img {
+    width: 22px;
+    height: 22px;
+}
+
+.tbh-loc-svc-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.tbh-loc-svc-desc {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+    opacity: .7;
+}
+
+/* ---- inventory ---- */
+.tbh-loc-inv {
+    background: #f4f7fa;
+    padding: 96px 0;
+}
+
+.tbh-loc-inv-head {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.tbh-loc-inv-title {
+    color: #0f2547;
+    margin-bottom: 16px;
+}
+
+.tbh-loc-inv-sub {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    opacity: .8;
+}
+
+.tbh-loc-inv-row {
+    margin-bottom: -24px;
+}
+
+.tbh-loc-inv-col {
+    flex: 0 0 calc(33.3333% - 16px);
+    max-width: calc(33.3333% - 16px);
+    margin-bottom: 24px;
+}
+
+.tbh-loc-inv-card {
+    height: 100%;
+    min-height: 400px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.tbh-loc-inv-photo {
+    height: 280px;
+    border-radius: 8px;
+    background: #c4c4c4;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.tbh-loc-inv-name,
+.tbh-loc-inv-price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #0f2547;
+    margin-bottom: 6px;
+}
+
+.tbh-loc-inv-price {
+    color: #1d4386;
+}
+
+.tbh-loc-inv-spec {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000;
+    opacity: .6;
+}
+
+.tbh-loc-inv-all {
+    margin-top: 48px;
+    text-align: center;
+}
+
+.tbh-loc-inv-all .tbh-btn {
+    height: 44px;
+    padding: 0 24px;
+    border-radius: 4px;
+}
+
+/* =================================================================
+   RESPONSIVE — one block per breakpoint, largest → smallest.
+
+   RULE: a breakpoint is opened ONCE for the whole stylesheet. To add a
+   page's responsive CSS, append a  ---- Page name ----  sub-comment group
+   inside the EXISTING block below. Never open a second @media for a
+   breakpoint that already exists.
+
+   Ladder: 1600 · 1500 · 1440 · 1350 · 1200 · 991 · 768 · 576 · 400
+   (1200 / 991 / 768 / 576 are the workhorses.)
+
+   Page order inside every block stays the same:
+   Global · Home · … new pages appended here.
+   ================================================================= */
+
+@media (max-width: 1440px) {
+
+    /* ---- Global ---- */
+    .tbh-h1 {
+        font-size: 96px;
+        line-height: 84px;
+    }
+
+    /* ---- Home page ---- */
+    .tbh-svc-card,
+    .tbh-promo {
+        height: 720px;
+    }
+
+    .tbh-sales {
+        padding: 100px 0;
+    }
+
+    .tbh-about {
+        padding: 160px 0 100px;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    /* ---- Global ---- */
+    .tbh-h1 {
+        font-size: 72px;
+        line-height: 66px;
+        letter-spacing: -1.5px;
+    }
+
+    .tbh-h2 {
+        font-size: 52px;
+        line-height: 50px;
+    }
+
+    .tbh-h3 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .tbh-nav {
+        gap: 28px;
+    }
+
+    .tbh-nav-link {
+        font-size: 14px;
+    }
+
+    .tbh-logo {
+        width: 200px;
+    }
+
+    .tbh-header-cta {
+        width: 156px;
+    }
+
+    .tbh-topbar-city {
+        margin-right: 16px;
+    }
+
+    .tbh-topbar-locations {
+        gap: 20px;
+    }
+
+    .tbh-footer-brand {
+        width: 400px;
+    }
+
+    .tbh-footer-top {
+        gap: 48px;
+    }
+
+    .tbh-footer-col {
+        margin-right: 3.5%;
+    }
+
+    /* ---- Home page ---- */
+    .tbh-hero {
+        height: 900px;
+    }
+
+    .tbh-sales-brands {
+        gap: 28px;
+    }
+
+    .tbh-svc-card,
+    .tbh-promo {
+        height: 600px;
+    }
+
+    .tbh-svc {
+        padding: 90px 0 100px;
+    }
+
+    .tbh-cards {
+        padding: 90px 0;
+    }
+
+    .tbh-fin {
+        padding: 90px 0 110px;
+    }
+
+    .tbh-fin-actions {
+        padding-top: 40px;
+    }
+
+    .tbh-school {
+        padding: 90px 0 100px;
+    }
+
+    .tbh-school-col {
+        flex: 0 0 32%;
+        max-width: 32%;
+        margin-right: 2%;
+    }
+
+    /* ---- Financing page ---- */
+    .tbh-fh {
+        height: 720px;
+    }
+
+    .tbh-benefit,
+    .tbh-step {
+        padding: 32px;
+    }
+
+    .tbh-lender-col {
+        flex: 0 0 200px;
+        max-width: 200px;
+        margin-right: 24px;
+    }
+
+    .tbh-lender img {
+        width: 152px;
+    }
+
+    /* ---- Schedule Demo page ---- */
+    .tbh-demo-form {
+        padding: 40px;
+    }
+
+    .tbh-expect-card {
+        padding: 32px;
+    }
+
+    /* ---- Service page ---- */
+    .tbh-srv-hero {
+        height: 720px;
+    }
+
+    .tbh-srv-card {
+        padding: 24px;
+    }
+
+    .tbh-srv-why-text {
+        flex: 0 0 46%;
+        max-width: 46%;
+    }
+
+    .tbh-srv-why-media {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .tbh-srv-depot {
+        height: 420px;
+    }
+
+    /* ---- Mobile Service page ---- */
+    .tbh-ms-hero {
+        height: 600px;
+    }
+
+    .tbh-ms-step {
+        padding: 32px;
+    }
+
+    .tbh-ms-map-split {
+        gap: 40px;
+    }
+
+    /* ---- Parts page ---- */
+    .tbh-pt-hero {
+        height: 720px;
+    }
+
+    .tbh-pt-cat-card,
+    .tbh-pt-why-card {
+        padding: 32px;
+    }
+
+    .tbh-pt-finder-card {
+        flex-basis: 400px;
+        max-width: 400px;
+    }
+
+    /* ---- About page ---- */
+    .tbh-ab-hero {
+        height: 700px;
+    }
+
+    .tbh-ab-founded-media-box {
+        height: 480px;
+    }
+
+    .tbh-ab-person-photo {
+        height: 320px;
+    }
+
+    /* ---- Blog page ---- */
+    .tbh-bl-featured {
+        padding: 24px;
+        gap: 32px;
+    }
+
+    .tbh-bl-featured-media {
+        height: 400px;
+    }
+
+    /* ---- Blog Post page ---- */
+    .tbh-bp-article-shell {
+        max-width: 780px;
+    }
+
+    /* ---- Events page ---- */
+    .tbh-ev-next {
+        padding: 32px;
+        gap: 32px;
+    }
+
+    .tbh-ev-next-media {
+        height: 400px;
+    }
+
+    .tbh-ev-card {
+        padding: 20px 24px;
+        gap: 24px;
+    }
+
+    /* ---- Employment page ---- */
+    .tbh-em-culture-media {
+        height: 400px;
+    }
+
+    .tbh-em-perk-col {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+    }
+
+    .tbh-em-perk-col:nth-child(4n) {
+        margin-right: 24px;
+    }
+
+    .tbh-em-perk-col:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    /* ---- Event Details page ---- */
+    .tbh-ed-card {
+        flex: 0 0 420px;
+        max-width: 420px;
+        padding: 32px;
+    }
+
+    /* ---- Contact page ---- */
+    .tbh-ct-hero {
+        padding: 80px 0;
+    }
+
+    .tbh-ct-loc {
+        padding: 80px 0;
+    }
+
+    .tbh-ct-loc-card {
+        padding: 32px;
+    }
+
+    /* ---- Reviews page ---- */
+    .tbh-rv-hero {
+        height: 420px;
+        padding: 80px 0;
+    }
+
+    .tbh-rv-grid {
+        padding: 64px 0 80px;
+    }
+
+    .tbh-rv-cta {
+        padding: 80px 0;
+    }
+
+    /* ---- FAQ page ---- */
+    .tbh-fq-hero {
+        height: 360px;
+        padding: 80px 0;
+    }
+
+    .tbh-fq-list {
+        padding: 64px 0 80px;
+    }
+
+    .tbh-fq-cta {
+        padding: 80px 0;
+    }
+
+    /* ---- Location page ---- */
+    .tbh-loc-hero {
+        height: 660px;
+        padding: 120px 0;
+    }
+
+    .tbh-loc-overview,
+    .tbh-loc-gallery,
+    .tbh-loc-services,
+    .tbh-loc-inv {
+        padding: 80px 0;
+    }
+
+    .tbh-loc-contact {
+        padding: 80px 0 0;
+    }
+
+    .tbh-loc-map {
+        padding: 48px 0 80px;
+    }
+
+    .tbh-loc-overview-row,
+    .tbh-loc-map-row {
+        gap: 48px;
+    }
+
+    .tbh-loc-facility {
+        height: 520px;
+    }
+
+    .tbh-loc-svc-col {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+    }
+
+    /* ---- Pro Shop page ---- */
+    .tbh-ps-hero {
+        height: 620px;
+        padding: 96px 0;
+    }
+
+    .tbh-ps-cats,
+    .tbh-ps-best,
+    .tbh-ps-adv,
+    .tbh-ps-loc {
+        padding: 80px 0;
+    }
+
+    .tbh-ps-brands {
+        padding: 79px 0 80px;
+    }
+
+    .tbh-ps-prod-col {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+    }
+
+    /* ---- Sell / Trade page ---- */
+    .tbh-st-hero {
+        height: 760px;
+        padding: 96px 0;
+    }
+
+    .tbh-st-how,
+    .tbh-st-why,
+    .tbh-st-trade,
+    .tbh-st-pricing,
+    .tbh-st-quotes,
+    .tbh-st-faq {
+        padding: 80px 0;
+    }
+
+    .tbh-st-val,
+    .tbh-st-fcta {
+        padding: 96px 0;
+    }
+
+    .tbh-st-why-row {
+        gap: 48px;
+    }
+
+    .tbh-st-why-media {
+        height: 520px;
+    }
+
+    .tbh-st-tier {
+        padding: 31px;
+    }
+
+    .tbh-st-tier-featured {
+        padding: 30px;
+    }
+
+    .tbh-st-step,
+    .tbh-st-quote {
+        padding: 31px;
+    }
+
+    /* ---- Supra brand page ---- */
+    .tbh-sp-hero {
+        height: 640px;
+        padding: 120px 0;
+    }
+
+    .tbh-sp-story,
+    .tbh-sp-tech,
+    .tbh-sp-inv,
+    .tbh-sp-demo {
+        padding: 80px 0;
+    }
+
+    .tbh-sp-lineup,
+    .tbh-sp-why {
+        padding: 96px 0;
+    }
+
+    .tbh-sp-story-row,
+    .tbh-sp-tech-row {
+        gap: 48px;
+    }
+
+    .tbh-sp-story-media,
+    .tbh-sp-tech-media {
+        flex: 0 0 480px;
+        max-width: 480px;
+        height: 520px;
+    }
+
+    .tbh-sp-models-row {
+        height: auto;
+        margin-bottom: -32px;
+    }
+
+    .tbh-sp-model-col {
+        margin-bottom: 32px;
+    }
+
+    .tbh-sp-model-card {
+        height: 100%;
+    }
+
+    .tbh-sp-life {
+        height: 520px;
+        padding: 120px 0;
+    }
+
+    .tbh-sp-feat-card {
+        padding: 32px;
+    }
+}
+
+@media (max-width: 991px) {
+
+    /* ---- Global ---- */
+    .tbh-h1 {
+        font-size: 56px;
+        line-height: 54px;
+        letter-spacing: -1px;
+    }
+
+    .tbh-h2 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .tbh-h4 {
+        font-size: 26px;
+        line-height: 28px;
+    }
+
+    .tbh-eyebrow {
+        font-size: 14px;
+        letter-spacing: 3px;
+    }
+
+    .tbh-nav {
+        display: none;
+    }
+
+    .tbh-megamenu,
+    .tbh-megamenu-exp,
+    .tbh-navdrop {
+        display: none;
+    }
+
+    .tbh-burger {
+        display: inline-flex;
+    }
+
+    .tbh-mobileMenu {
+        display: flex;
+    }
+
+    .tbh-mobileMenu-overlay {
+        display: block;
+    }
+
+    .tbh-header-cta {
+        display: none;
+    }
+
+    .tbh-topbar-tag {
+        display: none;
+    }
+
+    .tbh-topbar-inner {
+        justify-content: center;
+    }
+
+    .tbh-footer {
+        padding: 64px 0 40px;
+    }
+
+    .tbh-footer-top {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .tbh-footer-brand {
+        width: 100%;
+    }
+
+    .tbh-footer-news {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .tbh-footer-news-title {
+        text-align: left;
+    }
+
+    .tbh-footer-divider {
+        margin: 40px 0;
+    }
+
+    .tbh-footer-col {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+        margin-right: 0;
+        padding-right: 16px;
+        margin-bottom: 32px;
+    }
+
+    .tbh-about-text {
+        padding-top: 0;
+    }
+
+    /* ---- Home page ---- */
+    .tbh-hero {
+        height: 720px;
+    }
+
+    .tbh-sales {
+        padding: 64px 0;
+    }
+
+    .tbh-sales-media,
+    .tbh-sales-text,
+    .tbh-about-text,
+    .tbh-about-media,
+    .tbh-svc-col,
+    .tbh-cards-col,
+    .tbh-fin-text,
+    .tbh-fin-actions {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-sales-media {
+        margin-bottom: 40px;
+    }
+
+    .tbh-sales-img {
+        padding-top: 75%;
+    }
+
+    .tbh-svc {
+        padding: 64px 0;
+    }
+
+    .tbh-svc-col {
+        margin-bottom: 24px;
+    }
+
+    .tbh-svc-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .tbh-svc-card,
+    .tbh-promo {
+        height: 520px;
+    }
+
+    .tbh-about {
+        padding: 64px 0;
+    }
+
+    .tbh-about-media {
+        margin-top: 40px;
+    }
+
+    .tbh-about-img {
+        padding-top: 75%;
+    }
+
+    .tbh-cards {
+        padding: 64px 0;
+    }
+
+    .tbh-cards-col {
+        margin-bottom: 24px;
+    }
+
+    .tbh-cards-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .tbh-fin {
+        padding: 64px 0;
+    }
+
+    .tbh-fin-actions {
+        padding-top: 32px;
+    }
+
+    .tbh-fin-btn {
+        width: 100%;
+        max-width: 480px;
+    }
+
+    .tbh-school {
+        padding: 64px 0;
+    }
+
+    .tbh-school-grad {
+        background: linear-gradient(to bottom, rgba(8, 25, 47, 0.9) 0%, rgba(8, 25, 47, 0.75) 100%);
+    }
+
+    /* ---- Financing page ---- */
+    .tbh-fh {
+        height: 620px;
+    }
+
+    .tbh-why,
+    .tbh-steps,
+    .tbh-ffaq,
+    .tbh-fcta {
+        padding: 64px 0;
+    }
+
+    .tbh-why-col,
+    .tbh-step-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+
+    .tbh-why-col:last-child,
+    .tbh-step-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .tbh-partners {
+        padding: 56px 0;
+    }
+
+    .tbh-lender-col {
+        margin-bottom: 24px;
+    }
+
+    /* ---- Schedule Demo page ---- */
+    .tbh-dh {
+        height: 520px;
+    }
+
+    .tbh-demo-main,
+    .tbh-expect {
+        padding: 64px 0;
+    }
+
+    .tbh-demo-form-col,
+    .tbh-demo-details-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-demo-details-col {
+        margin-top: 48px;
+    }
+
+    .tbh-expect-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+
+    .tbh-expect-col:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ---- Service page ---- */
+    .tbh-srv-hero {
+        height: 620px;
+    }
+
+    .tbh-srv-grid-sec,
+    .tbh-srv-why,
+    .tbh-srv-form-sec {
+        padding: 64px 0;
+    }
+
+    .tbh-srv-col {
+        flex: 0 0 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+
+    .tbh-srv-col:nth-child(3n) {
+        margin-right: 20px;
+    }
+
+    .tbh-srv-col:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    .tbh-srv-why-text,
+    .tbh-srv-why-media {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-srv-why-media {
+        margin-top: 40px;
+    }
+
+    .tbh-srv-form {
+        padding: 40px;
+    }
+
+    /* ---- Mobile Service page ---- */
+    .tbh-ms-hero {
+        height: 540px;
+    }
+
+    .tbh-ms-how,
+    .tbh-ms-list-sec,
+    .tbh-ms-coverage {
+        padding: 64px 0;
+    }
+
+    .tbh-ms-step-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+
+    .tbh-ms-step-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .tbh-ms-list-text,
+    .tbh-ms-list-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-ms-list-col {
+        margin-top: 40px;
+    }
+
+    .tbh-ms-map-split {
+        flex-direction: column;
+    }
+
+    .tbh-ms-map {
+        flex: 0 0 auto;
+        max-width: 100%;
+        width: 100%;
+        height: 360px;
+    }
+
+    .tbh-ms-radius {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    /* ---- Parts page ---- */
+    .tbh-pt-hero {
+        height: 620px;
+    }
+
+    .tbh-pt-cats,
+    .tbh-pt-why,
+    .tbh-pt-finder,
+    .tbh-pt-brands {
+        padding: 64px 0;
+    }
+
+    .tbh-pt-cat-col {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+    }
+
+    .tbh-pt-cat-col:nth-child(3n) {
+        margin-right: 24px;
+    }
+
+    .tbh-pt-cat-col:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    .tbh-pt-why-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+
+    .tbh-pt-why-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .tbh-pt-finder-row {
+        flex-direction: column;
+    }
+
+    .tbh-pt-finder-card {
+        flex: 0 0 auto;
+        max-width: 100%;
+        width: 100%;
+        margin-top: 48px;
+    }
+
+    .tbh-pt-brand-col {
+        margin-bottom: 20px;
+    }
+
+    /* ---- About page ---- */
+    .tbh-ab-hero {
+        height: 620px;
+    }
+
+    .tbh-ab-founded,
+    .tbh-ab-principles,
+    .tbh-ab-team,
+    .tbh-ab-hubs,
+    .tbh-ab-why {
+        padding: 64px 0;
+    }
+
+    .tbh-ab-founded-row {
+        flex-direction: column;
+    }
+
+    .tbh-ab-founded-media,
+    .tbh-ab-founded-text {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-ab-founded-media-box {
+        height: 360px;
+    }
+
+    .tbh-ab-founded-text {
+        margin-top: 40px;
+    }
+
+    .tbh-ab-principle-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 32px;
+    }
+
+    .tbh-ab-principle-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .tbh-ab-team-col {
+        flex: 0 0 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+    }
+
+    .tbh-ab-team-col:nth-child(4n) {
+        margin-right: 32px;
+    }
+
+    .tbh-ab-team-col:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    .tbh-ab-hub-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .tbh-ab-hub-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .tbh-ab-why-col {
+        flex: 0 0 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+        margin-bottom: 40px;
+    }
+
+    .tbh-ab-why-col:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    /* ---- Blog page ---- */
+    .tbh-bl-hero {
+        height: 400px;
+    }
+
+    .tbh-bl-featured-sec,
+    .tbh-bl-grid-sec,
+    .tbh-bl-news-sec {
+        padding: 64px 0;
+    }
+
+    .tbh-bl-featured {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tbh-bl-featured-media {
+        flex: 0 0 auto;
+        max-width: 100%;
+        height: 360px;
+    }
+
+    .tbh-bl-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+    }
+
+    .tbh-bl-tab {
+        white-space: nowrap;
+    }
+
+    .tbh-bl-col {
+        flex: 0 0 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+
+    .tbh-bl-col:nth-child(3n) {
+        margin-right: 40px;
+    }
+
+    .tbh-bl-col:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    .tbh-bl-news-form {
+        flex-direction: column;
+    }
+
+    .tbh-bl-news-form input {
+        width: 100%;
+    }
+
+    /* ---- Blog Post page ---- */
+    .tbh-bp-hero {
+        height: 480px;
+        padding-bottom: 64px;
+    }
+
+    .tbh-bp-body-sec {
+        padding: 56px 0 64px;
+    }
+
+    .tbh-bp-related {
+        padding: 56px 0 64px;
+    }
+
+    .tbh-bp-article-shell {
+        max-width: 100%;
+    }
+
+    .tbh-bp-rel-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 32px;
+    }
+
+    .tbh-bp-rel-col:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ---- Events page ---- */
+    .tbh-ev-hero {
+        height: 400px;
+    }
+
+    .tbh-ev-next-sec {
+        padding: 56px 0;
+    }
+
+    .tbh-ev-lineup-sec {
+        padding: 48px 0 64px;
+    }
+
+    .tbh-ev-next {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tbh-ev-next-media {
+        flex: 0 0 auto;
+        max-width: 100%;
+        height: 320px;
+    }
+
+    .tbh-ev-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tbh-ev-card-media {
+        flex: 0 0 auto;
+        max-width: 100%;
+        height: 240px;
+    }
+
+    /* ---- Employment page ---- */
+    .tbh-em-hero {
+        height: 480px;
+    }
+
+    .tbh-em-culture,
+    .tbh-em-perks,
+    .tbh-em-apply {
+        padding: 64px 0;
+    }
+
+    .tbh-em-culture-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tbh-em-culture-media {
+        flex: 0 0 auto;
+        max-width: 100%;
+        height: 320px;
+        margin-top: 32px;
+    }
+
+    .tbh-em-form {
+        padding: 32px;
+    }
+
+    /* ---- Event Details page ---- */
+    .tbh-ed-hero {
+        height: 520px;
+    }
+
+    .tbh-ed-details-sec,
+    .tbh-ed-gallery,
+    .tbh-ed-similar {
+        padding: 64px 0;
+    }
+
+    .tbh-ed-details-row {
+        flex-direction: column;
+    }
+
+    .tbh-ed-card {
+        flex: 0 0 auto;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .tbh-ed-gallery-row {
+        flex-wrap: wrap;
+    }
+
+    .tbh-ed-gallery-item {
+        flex: 0 0 calc(50% - 12px);
+    }
+
+    .tbh-ed-similar-row {
+        flex-direction: column;
+    }
+
+    .tbh-ed-register {
+        padding: 64px 32px;
+    }
+
+    /* ---- Contact page ---- */
+    .tbh-ct-hero {
+        padding: 64px 0;
+    }
+
+    .tbh-ct-hero-inner {
+        gap: 32px;
+    }
+
+    .tbh-ct-hero-text {
+        width: 100%;
+    }
+
+    .tbh-ct-card {
+        width: 100%;
+        padding: 32px;
+        gap: 24px;
+    }
+
+    .tbh-ct-loc {
+        padding: 64px 0;
+    }
+
+    .tbh-ct-loc-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-ct-loc-col:first-child {
+        margin-bottom: 40px;
+    }
+
+    /* ---- Reviews page ---- */
+    .tbh-rv-hero {
+        height: 380px;
+        padding: 64px 0;
+    }
+
+    .tbh-rv-rating {
+        padding: 56px 0;
+    }
+
+    .tbh-rv-col {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+    }
+
+    .tbh-rv-grid {
+        padding: 56px 0 64px;
+    }
+
+    .tbh-rv-cta {
+        padding: 64px 0;
+    }
+
+    /* ---- FAQ page ---- */
+    .tbh-fq-hero {
+        height: 340px;
+        padding: 64px 0;
+    }
+
+    .tbh-fq-tabs {
+        padding: 24px 0;
+    }
+
+    .tbh-fq-tabs-inner {
+        gap: 12px;
+    }
+
+    .tbh-fq-list {
+        padding: 56px 0 64px;
+    }
+
+    .tbh-fq-cta {
+        padding: 64px 0;
+    }
+
+    /* ---- Location page ---- */
+    .tbh-loc-hero {
+        height: auto;
+        padding: 80px 0;
+    }
+
+    .tbh-loc-hero-inner {
+        height: auto;
+    }
+
+    .tbh-loc-overview,
+    .tbh-loc-gallery,
+    .tbh-loc-services,
+    .tbh-loc-inv {
+        padding: 64px 0;
+    }
+
+    .tbh-loc-contact {
+        padding: 64px 0 0;
+    }
+
+    .tbh-loc-map {
+        padding: 40px 0 64px;
+    }
+
+    .tbh-loc-overview-row,
+    .tbh-loc-map-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    .tbh-loc-facility {
+        flex: 0 0 auto;
+        height: 420px;
+    }
+
+    .tbh-loc-map-area {
+        flex: 0 0 auto;
+        height: 360px;
+    }
+
+    .tbh-loc-contact-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-loc-contact-card {
+        height: auto;
+        min-height: 176px;
+    }
+
+    .tbh-loc-inv-col {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+    }
+
+    .tbh-loc-head,
+    .tbh-loc-inv-head {
+        margin-bottom: 32px;
+    }
+
+    .tbh-loc-gallery-grid {
+        grid-template-rows: repeat(2, 220px);
+    }
+
+    /* ---- Pro Shop page ---- */
+    .tbh-ps-prod-col {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+    }
+
+    .tbh-ps-hero {
+        height: auto;
+        padding: 80px 0;
+    }
+
+    .tbh-ps-hero-inner {
+        height: auto;
+    }
+
+    .tbh-ps-cats,
+    .tbh-ps-best,
+    .tbh-ps-adv,
+    .tbh-ps-loc {
+        padding: 64px 0;
+    }
+
+    .tbh-ps-brands {
+        padding: 63px 0 64px;
+    }
+
+    .tbh-ps-cat-col,
+    .tbh-ps-adv-col {
+        flex: 0 0 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+    }
+
+    .tbh-ps-loc-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-ps-cats-head,
+    .tbh-ps-best-head,
+    .tbh-ps-adv-head,
+    .tbh-ps-loc-head {
+        margin-bottom: 32px;
+    }
+
+    /* ---- Sell / Trade page ---- */
+    .tbh-st-hero {
+        height: auto;
+        padding: 80px 0;
+    }
+
+    .tbh-st-hero-inner {
+        height: auto;
+    }
+
+    .tbh-st-how,
+    .tbh-st-why,
+    .tbh-st-trade,
+    .tbh-st-pricing,
+    .tbh-st-quotes,
+    .tbh-st-faq,
+    .tbh-st-val,
+    .tbh-st-fcta {
+        padding: 64px 0;
+    }
+
+    .tbh-st-why-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    .tbh-st-why-media {
+        flex: 0 0 auto;
+        height: 420px;
+    }
+
+    .tbh-st-trade-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .tbh-st-col-3 {
+        flex: 0 0 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+    }
+
+    .tbh-st-head {
+        margin-bottom: 32px;
+    }
+
+    .tbh-st-faq-head {
+        margin-bottom: 32px;
+    }
+
+    .tbh-st-val-card {
+        padding: 32px;
+    }
+
+    .tbh-sp-hero-inner {
+        height: auto;
+    }
+
+    .tbh-sp-story,
+    .tbh-sp-tech,
+    .tbh-sp-inv,
+    .tbh-sp-demo,
+    .tbh-sp-lineup,
+    .tbh-sp-why {
+        padding: 64px 0;
+    }
+
+    .tbh-sp-story-row,
+    .tbh-sp-tech-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    .tbh-sp-story-media,
+    .tbh-sp-tech-media {
+        flex: 0 0 auto;
+        max-width: 100%;
+        height: 420px;
+    }
+
+    .tbh-sp-model-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-sp-feat-col {
+        flex: 0 0 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+
+    .tbh-sp-head {
+        margin-bottom: 32px;
+    }
+
+    .tbh-sp-life {
+        height: 460px;
+        padding: 96px 0;
+    }
+
+    .tbh-sp-inv-col {
+        flex: 0 0 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* ---- Global ---- */
+    .tbh-shell {
+        padding: 0 20px;
+    }
+
+    .tbh-topbar {
+        height: auto;
+        padding: 8px 0;
+    }
+
+    .tbh-topbar-locations {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .tbh-topbar-divider {
+        display: none;
+    }
+
+    .tbh-footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* ---- Home page ---- */
+    .tbh-hero {
+        height: 620px;
+    }
+
+    .tbh-hero-actions {
+        flex-wrap: wrap;
+    }
+
+    .tbh-sales-brands {
+        flex-wrap: wrap;
+        height: auto;
+        gap: 24px;
+        padding: 24px 0;
+    }
+
+    .tbh-sales-actions {
+        flex-wrap: wrap;
+    }
+
+    .tbh-svc-card-body,
+    .tbh-promo-body {
+        left: 24px;
+        right: 24px;
+        bottom: 28px;
+    }
+
+    .tbh-school-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+
+    .tbh-school-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .tbh-level {
+        height: auto;
+    }
+
+    /* ---- Financing page ---- */
+    .tbh-fh {
+        height: 560px;
+    }
+
+    .tbh-fh-actions {
+        flex-wrap: wrap;
+    }
+
+    .tbh-ffaq-row {
+        padding: 20px;
+    }
+
+    /* ---- Schedule Demo page ---- */
+    .tbh-dh {
+        height: 480px;
+    }
+
+    .tbh-demo-form {
+        padding: 32px 24px;
+    }
+
+    /* ---- Service page ---- */
+    .tbh-srv-hero {
+        height: 560px;
+    }
+
+    .tbh-srv-depot {
+        height: 340px;
+    }
+
+    .tbh-srv-form {
+        padding: 32px 24px;
+    }
+
+    /* ---- Mobile Service page ---- */
+    .tbh-ms-hero {
+        height: 480px;
+    }
+
+    .tbh-ms-hero .tbh-btn {
+        width: 100%;
+    }
+
+    .tbh-ms-row {
+        flex-wrap: wrap;
+    }
+
+    .tbh-ms-row-time {
+        margin-left: 36px;
+    }
+
+    /* ---- Parts page ---- */
+    .tbh-pt-hero {
+        height: 560px;
+    }
+
+    .tbh-pt-hero-actions {
+        flex-wrap: wrap;
+    }
+
+    .tbh-pf-row {
+        flex-direction: column;
+    }
+
+    /* ---- About page ---- */
+    .tbh-ab-hero {
+        height: 560px;
+    }
+
+    .tbh-ab-person-photo {
+        height: 280px;
+    }
+
+    /* ---- Blog page ---- */
+    .tbh-bl-hero {
+        height: 360px;
+    }
+
+    /* ---- Blog Post page ---- */
+    .tbh-bp-hero {
+        height: 420px;
+    }
+
+    /* ---- Events page ---- */
+    .tbh-ev-hero {
+        height: 360px;
+    }
+
+    /* ---- Employment page ---- */
+    .tbh-em-hero {
+        height: 440px;
+    }
+
+    .tbh-em-field-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    /* ---- Event Details page ---- */
+    .tbh-ed-hero {
+        height: 480px;
+    }
+
+    .tbh-ed-info-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .tbh-ed-fg-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    /* ---- Contact page ---- */
+    .tbh-ct-card {
+        padding: 24px;
+    }
+
+    .tbh-ct-loc-head {
+        margin-bottom: 32px;
+    }
+
+    /* ---- Reviews page ---- */
+    .tbh-rv-hero {
+        height: 340px;
+    }
+
+    .tbh-rv-score-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .tbh-rv-score-meta {
+        align-items: center;
+    }
+
+    .tbh-rv-based {
+        text-align: center;
+    }
+
+    .tbh-rv-sort-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    /* ---- FAQ page ---- */
+    .tbh-fq-hero {
+        height: 320px;
+    }
+
+    .tbh-fq-tab {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* ---- Sell / Trade page ---- */
+    .tbh-st-col-2 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-st-why-media {
+        height: 340px;
+    }
+
+    .tbh-st-trade-media {
+        height: 260px;
+    }
+
+    /* ---- Supra brand page ---- */
+    .tbh-sp-story-media,
+    .tbh-sp-tech-media {
+        height: 340px;
+    }
+
+    .tbh-sp-model-media {
+        height: 260px;
+    }
+
+    .tbh-sp-life {
+        height: 400px;
+        padding: 64px 0;
+    }
+
+    .tbh-sp-inv-foot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    /* ---- Location page ---- */
+    .tbh-loc-facility {
+        height: 320px;
+    }
+
+    .tbh-loc-map-area {
+        height: 280px;
+    }
+
+    .tbh-loc-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(3, 200px);
+    }
+
+    .tbh-loc-gallery-item-tall {
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 576px) {
+
+    /* ---- Global ---- */
+    .tbh-h1 {
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: -0.5px;
+    }
+
+    .tbh-h2 {
+        font-size: 30px;
+        line-height: 32px;
+    }
+
+    .tbh-h3 {
+        font-size: 28px;
+        line-height: 30px;
+    }
+
+    .tbh-h4 {
+        font-size: 22px;
+        line-height: 24px;
+    }
+
+    .tbh-p-lg {
+        font-size: 17px;
+        line-height: 26px;
+    }
+
+    .tbh-p-md {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .tbh-eyebrow {
+        font-size: 12px;
+        letter-spacing: 2.5px;
+    }
+
+    .tbh-logo {
+        width: 150px;
+    }
+
+    /* ---- Home page ---- */
+    .tbh-hero {
+        height: 560px;
+    }
+
+    .tbh-hero-content .tbh-eyebrow {
+        margin-bottom: 16px;
+    }
+
+    .tbh-hero-btn1,
+    .tbh-hero-btn2,
+    .tbh-sales-btn1,
+    .tbh-sales-btn2 {
+        width: 100%;
+    }
+
+    .tbh-svc-card,
+    .tbh-promo {
+        height: 440px;
+    }
+
+    .tbh-svc-btn,
+    .tbh-school-btn {
+        width: 100%;
+        padding: 0 16px;
+        font-size: 14px;
+    }
+
+    .tbh-about-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+
+    .tbh-about-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .tbh-about-card {
+        height: auto;
+        padding: 24px 20px;
+    }
+
+    .tbh-about-btn {
+        width: 100%;
+    }
+
+    .tbh-footer-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tbh-footer-form input {
+        width: 100%;
+    }
+
+    /* ---- Financing page ---- */
+    .tbh-fh {
+        height: 520px;
+    }
+
+    .tbh-btn-lg {
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+
+    .tbh-fh-actions .tbh-btn {
+        width: 100%;
+    }
+
+    .tbh-benefit,
+    .tbh-step {
+        padding: 24px;
+    }
+
+    .tbh-step-num {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    .tbh-lender-col {
+        flex: 0 0 100%;
+        max-width: 260px;
+        margin-right: 0;
+    }
+
+    /* ---- Schedule Demo page ---- */
+    .tbh-dh {
+        height: 440px;
+    }
+
+    .tbh-fg-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-fg textarea {
+        height: 72px;
+    }
+
+    .tbh-demo-submit {
+        width: 100%;
+    }
+
+    .tbh-expect-card {
+        padding: 24px;
+    }
+
+    /* ---- Service page ---- */
+    .tbh-srv-hero {
+        height: 520px;
+    }
+
+    .tbh-srv-hero .tbh-btn {
+        width: 100%;
+    }
+
+    .tbh-srv-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .tbh-srv-col:nth-child(3n) {
+        margin-right: 0;
+    }
+
+    .tbh-srv-depot {
+        height: 260px;
+    }
+
+    /* ---- Mobile Service page ---- */
+    .tbh-ms-hero {
+        height: 460px;
+    }
+
+    .tbh-ms-map {
+        height: 260px;
+    }
+
+    .tbh-ms-list-text .tbh-btn {
+        width: 100%;
+    }
+
+    /* ---- Parts page ---- */
+    .tbh-pt-hero {
+        height: 520px;
+    }
+
+    .tbh-pt-hero-actions .tbh-btn {
+        width: 100%;
+    }
+
+    .tbh-pt-cat-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .tbh-pt-cat-col:nth-child(3n) {
+        margin-right: 0;
+    }
+
+    .tbh-pf-submit {
+        width: 100%;
+    }
+
+    /* ---- About page ---- */
+    .tbh-ab-hero {
+        height: 520px;
+    }
+
+    .tbh-ab-team-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .tbh-ab-team-col:nth-child(4n) {
+        margin-right: 0;
+    }
+
+    .tbh-ab-why-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    /* ---- Blog page ---- */
+    .tbh-bl-hero {
+        height: 340px;
+    }
+
+    .tbh-bl-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .tbh-bl-col:nth-child(3n) {
+        margin-right: 0;
+    }
+
+    .tbh-bl-card-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* ---- Blog Post page ---- */
+    .tbh-bp-hero {
+        height: 380px;
+        padding-bottom: 40px;
+    }
+
+    .tbh-bp-quote {
+        padding-left: 20px;
+    }
+
+    /* ---- Events page ---- */
+    .tbh-ev-hero {
+        height: 320px;
+    }
+
+    .tbh-ev-card {
+        padding: 16px;
+    }
+
+    /* ---- Employment page ---- */
+    .tbh-em-hero {
+        height: 400px;
+    }
+
+    .tbh-em-perk-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .tbh-em-perk-col:nth-child(4n) {
+        margin-right: 0;
+    }
+
+    .tbh-em-form {
+        padding: 24px;
+    }
+
+    /* ---- Event Details page ---- */
+    .tbh-ed-hero {
+        height: 440px;
+    }
+
+    .tbh-ed-hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .tbh-ed-meta-dot {
+        display: none;
+    }
+
+    .tbh-ed-gallery-item {
+        flex: 0 0 100%;
+    }
+
+    /* ---- Contact page ---- */
+    .tbh-ct-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-ct-col:first-child {
+        margin-bottom: 24px;
+    }
+
+    .tbh-ct-loc-card {
+        padding: 24px;
+    }
+
+    .tbh-ct-loc-phone {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .tbh-ct-map {
+        height: 180px;
+    }
+
+    /* ---- Reviews page ---- */
+    .tbh-rv-hero {
+        height: 320px;
+    }
+
+    .tbh-rv-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-rv-card {
+        padding: 24px;
+    }
+
+    /* ---- FAQ page ---- */
+    .tbh-fq-hero {
+        height: 300px;
+    }
+
+    .tbh-fq-tab {
+        padding: 8px 16px;
+        font-size: 13px;
+        letter-spacing: .5px;
+    }
+
+    .tbh-fq-row {
+        padding: 19px;
+    }
+
+    .tbh-fq-q {
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .tbh-fq-q img {
+        margin-top: 1px;
+    }
+
+    /* ---- Location page ---- */
+    .tbh-loc-svc-col,
+    .tbh-loc-inv-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-loc-ctas .tbh-btn {
+        width: 100%;
+    }
+
+    .tbh-loc-contact-card,
+    .tbh-loc-svc-card {
+        padding: 23px;
+    }
+
+    .tbh-loc-contact-body,
+    .tbh-loc-contact-phone {
+        padding-left: 0;
+    }
+
+    .tbh-loc-gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: repeat(4, 200px);
+    }
+
+    .tbh-loc-gallery-item-tall,
+    .tbh-loc-gallery-item-wide {
+        grid-column: span 1;
+    }
+
+    .tbh-loc-inv-photo {
+        height: 220px;
+    }
+
+    /* ---- Pro Shop page ---- */
+    .tbh-ps-cat-col,
+    .tbh-ps-prod-col,
+    .tbh-ps-adv-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-ps-cat-card,
+    .tbh-ps-loc-card {
+        padding: 23px;
+    }
+
+    .tbh-ps-adv-card {
+        padding: 23px;
+    }
+
+    .tbh-ps-hero-cta .tbh-btn {
+        width: 100%;
+    }
+
+    .tbh-ps-best-cta {
+        text-align: center;
+    }
+
+    .tbh-ps-loc-photo {
+        height: 200px;
+    }
+
+    /* ---- Sell / Trade page ---- */
+    .tbh-st-col-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-st-col-half {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-st-col-half:first-child {
+        margin-bottom: 16px;
+    }
+
+    .tbh-st-ctas .tbh-btn,
+    .tbh-st-fcta-ctas .tbh-btn {
+        width: 100%;
+    }
+
+    .tbh-st-step,
+    .tbh-st-quote,
+    .tbh-st-tier {
+        padding: 23px;
+    }
+
+    .tbh-st-tier-featured {
+        padding: 22px;
+    }
+
+    .tbh-st-val-card {
+        padding: 24px;
+    }
+
+    .tbh-st-faq-row {
+        padding: 23px;
+    }
+
+    .tbh-st-trade-body {
+        padding: 0 23px 23px;
+    }
+
+    .tbh-st-why-media {
+        height: 260px;
+    }
+
+    .tbh-st-trade-media {
+        height: 200px;
+    }
+
+    /* ---- Supra brand page ---- */
+    .tbh-sp-hero-ctas .tbh-btn,
+    .tbh-sp-demo-ctas .tbh-btn {
+        width: 100%;
+    }
+
+    .tbh-sp-feat-col,
+    .tbh-sp-inv-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tbh-sp-feat-card {
+        padding: 24px;
+    }
+
+    .tbh-sp-model-card {
+        padding: 24px;
+    }
+
+    .tbh-sp-model-titlerow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .tbh-sp-story-media,
+    .tbh-sp-tech-media {
+        height: 260px;
+    }
+
+    .tbh-sp-model-media {
+        height: 220px;
+    }
+
+    .tbh-sp-badges {
+        gap: 24px;
+    }
+
+    .tbh-sp-award {
+        width: 100%;
+    }
+}
