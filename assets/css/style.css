@@ -201,17 +201,16 @@ i[class*="fa-"],
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 48px;
-    padding: 0 28px;
+    padding: 16px 28px;
     border-radius: 2px;
     border: 1px solid transparent;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
     font-size: 16px;
-    line-height: 1;
+    line-height: 18px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    white-space: nowrap;
+    text-align: center;
     cursor: pointer;
     transition: background-color .25s ease, color .25s ease, border-color .25s ease;
 }
@@ -5870,8 +5869,7 @@ i[class*="fa-"],
 
 /* figma sizes these ctas from 32/16 padding rather than the 48px default */
 .tbh-sp-btn {
-    height: 52px;
-    padding: 0 32px;
+    padding: 16px 32px;
 }
 
 .tbh-sp-btn-outline {
@@ -6364,8 +6362,8 @@ i[class*="fa-"],
 }
 
 .tbh-sp-inv-btn {
-    height: 40px;
-    padding: 0 20px;
+    padding: 16px 20px;
+    text-align: center;
 }
 
 .tbh-sp-inv-all {
@@ -6484,8 +6482,7 @@ i[class*="fa-"],
 
 /* figma sizes these ctas from 32/16 padding and a 4px radius */
 .tbh-st-btn {
-    height: 52px;
-    padding: 0 32px;
+    padding: 16px 32px;
     border-radius: 4px;
 }
 
@@ -6743,8 +6740,7 @@ i[class*="fa-"],
 
 .tbh-st-trade-btn {
     flex: none;
-    height: 48px;
-    padding: 0 28px;
+    padding: 16px 28px;
     border-radius: 4px;
 }
 
@@ -6931,7 +6927,7 @@ i[class*="fa-"],
 .tbh-st-tier-btn {
     margin-top: auto;
     width: 100%;
-    height: 52px;
+    padding: 16px 24px;
     border-radius: 4px;
 }
 
@@ -7256,13 +7252,12 @@ i[class*="fa-"],
 }
 
 .tbh-st-fcta-ctas .tbh-btn {
-    height: 52px;
-    padding: 0 36px;
+    padding: 16px 36px;
     border-radius: 4px;
 }
 
 .tbh-st-fcta-ctas .tbh-st-btn-outline {
-    padding: 0 34px;
+    padding: 16px 34px;
 }
 
 /* ============================== */
@@ -7321,8 +7316,7 @@ i[class*="fa-"],
 }
 
 .tbh-ps-btn {
-    height: 52px;
-    padding: 0 32px;
+    padding: 16px 32px;
     border-radius: 4px;
 }
 
@@ -7484,8 +7478,7 @@ i[class*="fa-"],
 }
 
 .tbh-ps-best-cta .tbh-btn {
-    height: 44px;
-    padding: 0 24px;
+    padding: 16px 24px;
     border-radius: 4px;
 }
 
@@ -7752,8 +7745,7 @@ i[class*="fa-"],
 }
 
 .tbh-loc-btn {
-    height: 52px;
-    padding: 0 32px;
+    padding: 16px 32px;
     border-radius: 4px;
 }
 
@@ -7953,8 +7945,7 @@ i[class*="fa-"],
 }
 
 .tbh-loc-dir-btn {
-    height: 44px;
-    padding: 0 24px;
+    padding: 16px 24px;
     border-radius: 4px;
 }
 
@@ -8157,8 +8148,7 @@ i[class*="fa-"],
 }
 
 .tbh-loc-inv-all .tbh-btn {
-    height: 44px;
-    padding: 0 24px;
+    padding: 16px 24px;
     border-radius: 4px;
 }
 
@@ -9931,7 +9921,7 @@ i[class*="fa-"],
     .tbh-svc-btn,
     .tbh-school-btn {
         width: 100%;
-        padding: 0 16px;
+        padding: 12px 16px;
         font-size: 14px;
     }
 
