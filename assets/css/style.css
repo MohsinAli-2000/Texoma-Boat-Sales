@@ -25,9 +25,8 @@
     box-sizing: border-box;
 }
 
-html,
-body {
-    overflow-x: hidden;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -354,13 +353,15 @@ i[class*="fa-"],
 
 /* ---- top utility bar (40px) ---- */
 .tbh-topbar {
-    height: 40px;
+    height: fit-content;
     background: #1d4386;
+    padding: 12px 20px;
 }
 
 .tbh-topbar-inner {
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
@@ -387,7 +388,6 @@ i[class*="fa-"],
 .tbh-topbar-loc {
     display: inline-flex;
     align-items: center;
-    white-space: nowrap;
 }
 
 .tbh-topbar-dot {
@@ -1195,6 +1195,7 @@ i[class*="fa-"],
 
 .tbh-sales-brands {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 46px;
     height: 81px;
@@ -9580,6 +9581,11 @@ i[class*="fa-"],
         padding: 0 20px;
     }
 
+    .tbh-footer-col {
+        flex: unset;
+        max-width: 50%;
+    }
+
     .tbh-topbar {
         height: auto;
         padding: 8px 0;
@@ -9860,6 +9866,11 @@ i[class*="fa-"],
         font-size: 40px;
         line-height: 40px;
         letter-spacing: -0.5px;
+    }
+
+    .tbh-footer-col {
+        flex: unset;
+        max-width: 100%;
     }
 
     .tbh-h2 {
@@ -10379,5 +10390,23 @@ i[class*="fa-"],
 
     .tbh-sp-award {
         width: 100%;
+    }
+}
+
+@media(max-width: 480px) {
+    .tbh-hero {
+        height: 620px;
+    }
+}
+
+@media(max-width: 430px) {
+    .tbh-topbar-phone {
+        font-size: 12px;
+        letter-spacing: 0px;
+    }
+
+    .tbh-topbar-phone {
+        font-size: 11px;
+        letter-spacing: 0px;
     }
 }
