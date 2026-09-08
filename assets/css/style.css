@@ -85,6 +85,27 @@ i[class*="fa-"],
 }
 
 /* ---- form validation (GTM tracked forms) ---- */
+
+
+input.error_field::placeholder {
+    color: red !important;
+}
+
+
+textarea.error_field::placeholder {
+    color: red !important;
+}
+
+.error_field {
+    /* border-bottom: 1px solid red !important; */
+    border: 1px solid red !important;
+}
+
+.req_check {
+    /* border-bottom: 1px solid red !important; */
+    border: 1px solid red !important;
+}
+
 .form-group {
     position: relative;
 }
@@ -8297,6 +8318,257 @@ i[class*="fa-"],
     border-radius: 4px;
 }
 
+/* 404 page start here */
+
+.commonSection {
+    margin-bottom: 80px;
+}
+.commonSectionInnerWrap {
+    display: flex;
+    gap: 120px;
+    max-width: calc(100% - 15%);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.commonSectionTextWrapper {
+    width: 50%;
+    max-width: 600px;
+}
+.commonSectionImageWrapper {
+    width: 50%;
+}
+.commonSectionImageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.commonSectionHeading {
+    color: #222;
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px; /* 125% */
+    letter-spacing: 6.4px;
+    text-transform: uppercase;
+}
+.commonPara {
+    color: #1E1E1E;
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+.commonSectionLinkWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.featured-btn {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: uppercase;
+    background: #222;
+    display: inline-block;
+}
+.thank-you-content-box {
+    width: 50%;
+}
+.thank-you-inner-box{
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+#contactModal_email .modal-header {
+    border-bottom: 0;
+    padding-top: 30px;
+}
+
+#contactModal_email .modal-dialog {
+    max-width: 450px;
+}
+
+.popup_input {
+    width: calc(100% - 100px);
+    height: 43px;
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #dedfe0;
+    margin-bottom: 0;
+    padding: 0 10px 0 10px
+}
+
+.shareModalHeading {
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    font-weight: 300;
+}
+
+.copyShareLinkBtn {
+    text-align: center;
+    background: #1a1a1a;
+    border: 1px solid transparent;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    font-weight: 200;
+    transition: 0.4s ease all;
+    border: none;
+    outline: none;
+}
+
+.copyLinkWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shareIconsContainer {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.shareIconsWrapper {
+    margin-top: 40px;
+}
+
+.shareIconsContainer .fa-brands {
+    color: #1a1a1a;
+}
+
+.shareIcons {
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: #fff;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.desktopShareBtn {
+    display: block;
+}
+
+.mobileShareBtn {
+    display: none;
+}
+
+/* accordian css END*/
+
+/* special banner css starts */
+.specialBanner {
+    background-color: #222222;
+    padding: 22px 23px 8px 23px;
+}
+
+.specialTag{
+    position: relative;
+}
+
+.specialTagText{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 10%;
+    z-index: 2;
+    background-color: #222;
+}
+
+.specialWhiteLine {
+    margin: 0;
+    background-color: #FFFFFF33;
+    height: 1px;
+}
+
+.specialTagText {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.specialBoatTitle {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.specailMoreDetailBtn {
+    color: rgba(255, 255, 255, 0.60);
+    text-align: center;
+   font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.specailMoreDetailBtn:hover {
+    color: rgba(255, 255, 255, 0.60);
+}
+
+.specialShortDescpWrap{
+    display: none;
+}
+
+.specialShortDescpText {
+    color: #FFF;
+   font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+.specialBtnArrow{
+    transition: all 0.4s;
+    position: relative;
+}
+
+.rotate180Deg{
+    transform: rotate(180deg);
+}
+/* special banner css ends */
+
 /* =================================================================
    RESPONSIVE — one block per breakpoint, largest → smallest.
 
@@ -8313,6 +8585,14 @@ i[class*="fa-"],
    ================================================================= */
 
 @media (max-width: 1440px) {
+    .commonSectionHeading {
+        font-size: 29px;
+        letter-spacing: 3px;
+    }
+    .commonPara {
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
 
     /* ---- Global ---- */
     .tbh-h1 {
@@ -8336,6 +8616,14 @@ i[class*="fa-"],
 }
 
 @media (max-width: 1200px) {
+    .commonSectionInnerWrap {
+        max-width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .commonSectionInnerWrap {
+        gap: 40px;
+    }
 
     /* ---- Global ---- */
     .tbh-h1 {
@@ -8771,6 +9059,27 @@ i[class*="fa-"],
 }
 
 @media (max-width: 991px) {
+    .commonSectionInnerWrap {
+        gap: 40px;
+        flex-flow: column-reverse;
+    }
+    .commonSectionTextWrapper {
+        width: 100%;
+        max-width: 600px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .commonSectionImageWrapper {
+        width: 100%;
+    }
+
+    .desktopShareBtn {
+        display: none;
+    }
+
+    .mobileShareBtn {
+        display: block;
+    }
 
     /* ---- Global ---- */
     .tbh-h1 {
@@ -9996,6 +10305,13 @@ i[class*="fa-"],
 
 @media (max-width: 576px) {
 
+    .commonSectionInnerWrap {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .commonSectionLinkWrap {
+        flex-direction: column-reverse;
+    }
     /* ---- Global ---- */
     .tbh-h1 {
         font-size: 40px;
