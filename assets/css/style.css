@@ -5180,7 +5180,7 @@ i[class*="fa-"],
 .tbh-ed-fg select {
     appearance: none;
     -webkit-appearance: none;
-    background-image: url('../images/event-details/icon-chevron-down.svg');
+    background-image: url('https://cdn.mdsbrand.com/mean-texoma-boat-house/assets/images/event-details/icon-chevron-down.svg');
     background-repeat: no-repeat;
     background-position: right 16px center;
     background-size: 16px 16px;
@@ -5379,7 +5379,7 @@ i[class*="fa-"],
     appearance: none;
     -webkit-appearance: none;
     color: #0f2547;
-    background-image: url('../images/contact/icon-chevron-down.svg');
+    background-image: url('https://cdn.mdsbrand.com/mean-texoma-boat-house/assets/images/contact/icon-chevron-down.svg');
     background-repeat: no-repeat;
     background-position: right 15px center;
     background-size: 12px 8px;
@@ -5653,7 +5653,7 @@ i[class*="fa-"],
     color: #0f2547;
     appearance: none;
     -webkit-appearance: none;
-    background-image: url('../images/reviews/icon-chevron-down.svg');
+    background-image: url('https://cdn.mdsbrand.com/mean-texoma-boat-house/assets/images/reviews/icon-chevron-down.svg');
     background-repeat: no-repeat;
     background-position: right 15px center;
     background-size: 10px 6px;

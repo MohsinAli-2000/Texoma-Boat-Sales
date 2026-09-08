@@ -416,8 +416,8 @@ if ($('.myThing-slider').length) {
         loop: false,
         margin: 20,
         nav: true,
-        navText: ['<img src="./assets/images/home/left-arrow.webp" alt="prev"/>',
-                  '<img src="./assets/images/home/right-arrow.webp" alt="next"/>'],
+        navText: ['<img src="https://cdn.mdsbrand.com/mean-texoma-boat-house/assets/images/home/left-arrow.webp" alt="prev"/>',
+                  '<img src="https://cdn.mdsbrand.com/mean-texoma-boat-house/assets/images/home/right-arrow.webp" alt="next"/>'],
         dots: true,
         smartSpeed: 600,
         center: true,
@@ -440,9 +440,9 @@ Two real examples already in `script.js`:
 
 ## 11. Assets & placeholders
 
-- Page images live in `./assets/images/<page>/`. Reference with relative
+- Page images live in `https://cdn.mdsbrand.com/mean-texoma-boat-house/assets/images/<page>/`. Reference with relative
   `./assets/...` paths (every page sits at repo root).
-- `./assets/images/home/grey.webp` is the **grey placeholder** for any
+- `https://cdn.mdsbrand.com/mean-texoma-boat-house/assets/images/home/grey.webp` is the **grey placeholder** for any
   CMS-driven/not-yet-supplied image (cards, galleries, crew photos).
 - Inventory/spec icons are pulled from the `cdn.mdsbrand.com` CDN (see the
   new-arrivals card in `home.html`).
