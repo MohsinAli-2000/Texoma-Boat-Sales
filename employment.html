@@ -209,46 +209,54 @@
             <p class="tbh-em-apply-para">Ready to take the next step? Complete the brief application form below, and
                 our recruitment team will be in touch shortly.</p>
 
-            <form class="tbh-em-form" onsubmit="return false;">
+            <form class="tbh-em-form gtm_form" id="employment_form" data-form-id="Employment Application Form" onsubmit="return false;">
                 <div class="tbh-em-field-row">
-                    <div class="tbh-em-field">
-                        <label class="tbh-em-label" for="emFirst">First Name <span class="req">*</span></label>
-                        <input type="text" id="emFirst" placeholder="e.g. John" required>
+                    <div class="tbh-em-field form-group">
+                        <label class="tbh-em-label" id="emFirstLabel" for="emFirst">First Name <span class="req">*</span></label>
+                        <input type="text" name="firstName" id="emFirst" class="require_check" aria-labelledby="emFirstLabel" placeholder="e.g. John" required>
+                        <div class="field-error" id="error_emFirst"></div>
                     </div>
-                    <div class="tbh-em-field">
-                        <label class="tbh-em-label" for="emLast">Last Name <span class="req">*</span></label>
-                        <input type="text" id="emLast" placeholder="e.g. Smith" required>
+                    <div class="tbh-em-field form-group">
+                        <label class="tbh-em-label" id="emLastLabel" for="emLast">Last Name <span class="req">*</span></label>
+                        <input type="text" name="lastName" id="emLast" class="require_check" aria-labelledby="emLastLabel" placeholder="e.g. Smith" required>
+                        <div class="field-error" id="error_emLast"></div>
                     </div>
                 </div>
 
                 <div class="tbh-em-field-row">
-                    <div class="tbh-em-field">
-                        <label class="tbh-em-label" for="emEmail">Email Address <span class="req">*</span></label>
-                        <input type="email" id="emEmail" placeholder="john.smith@gmail.com" required>
+                    <div class="tbh-em-field form-group">
+                        <label class="tbh-em-label" id="emEmailLabel" for="emEmail">Email Address <span class="req">*</span></label>
+                        <input type="email" name="email" id="emEmail" class="require_check" aria-labelledby="emEmailLabel" placeholder="john.smith@gmail.com" required>
+                        <div class="field-error" id="error_emEmail"></div>
                     </div>
-                    <div class="tbh-em-field">
-                        <label class="tbh-em-label" for="emPhone">Phone Number <span class="req">*</span></label>
-                        <input type="tel" id="emPhone" placeholder="(555) 123-4567" required>
+                    <div class="tbh-em-field form-group">
+                        <label class="tbh-em-label" id="emPhoneLabel" for="emPhone">Phone Number <span class="req">*</span></label>
+                        <input type="tel" name="phoneNo" id="emPhone" class="require_check" aria-labelledby="emPhoneLabel" placeholder="(555) 123-4567" required>
+                        <div class="field-error" id="error_emPhone"></div>
                     </div>
                 </div>
 
-                <div class="tbh-em-field">
-                    <label class="tbh-em-label" for="emMessage">Message / Position of Interest</label>
-                    <textarea id="emMessage"
+                <div class="tbh-em-field form-group">
+                    <label class="tbh-em-label" id="emMessageLabel" for="emMessage">Message / Position of Interest</label>
+                    <textarea name="message" id="emMessage" aria-labelledby="emMessageLabel"
                         placeholder="Tell us a bit about yourself and why you'd like to work with Texoma Boat House..."></textarea>
+                    <div class="field-error" id="error_emMessage"></div>
                 </div>
 
-                <div class="tbh-em-field">
-                    <label class="tbh-em-label">Upload Resume</label>
+                <div class="tbh-em-field form-group">
+                    <label class="tbh-em-label" id="emResumeLabel">Upload Resume</label>
                     <label class="tbh-em-upload">
-                        <input type="file" accept=".pdf,.docx,.rtf" hidden>
+                        <input type="file" name="resume" id="emResume" aria-labelledby="emResumeLabel" accept=".pdf,.docx,.rtf" hidden>
                         <img src="./assets/images/employment/icon-upload-cloud.svg" alt="">
                         <span class="tbh-em-upload-title">Click to upload or drag &amp; drop</span>
                         <span class="tbh-em-upload-sub">PDF, DOCX, or RTF (Max 10MB)</span>
                     </label>
+                    <div class="field-error" id="error_emResume"></div>
                 </div>
 
-                <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-em-submit">Submit Application</button>
+                <input type="text" name="honeypot" id="em_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+
+                <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-em-submit gtm_form_submit" data-form-id="Employment Application Form">Submit Application</button>
 
                 <p class="tbh-em-form-fine">Texoma Boat House is an equal opportunity employer. We celebrate diversity
                     and are committed to creating an inclusive environment for all employees.</p>
@@ -272,9 +280,14 @@
                     <p class="tbh-h4 tbh-white tbh-footer-news-title">Stay In The Wake</p>
                     <p class="tbh-footer-news-copy">Get updates on new boats, events, and service tips delivered to your
                         inbox.</p>
-                    <form class="tbh-footer-form" onsubmit="return false;">
-                        <input type="email" placeholder="Email address" aria-label="Email address">
-                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe">Subscribe</button>
+                    <form class="tbh-footer-form gtm_form" id="footer_subscribe_form" data-form-id="Newsletter Signup Form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label id="footerEmailLabel" for="footerEmail" class="sr-only">Email Address*</label>
+                            <input type="email" name="email" id="footerEmail" class="require_check" placeholder="Email address" aria-labelledby="footerEmailLabel">
+                            <div class="field-error" id="error_footerEmail"></div>
+                        </div>
+                        <input type="text" name="honeypot" id="footer_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe gtm_form_submit" data-form-id="Newsletter Signup Form">Subscribe</button>
                     </form>
                 </div>
             </div>

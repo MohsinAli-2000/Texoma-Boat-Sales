@@ -288,50 +288,60 @@
                     clinics. Spaces are filled on a first-come, first-served basis.</p>
             </div>
 
-            <form class="tbh-ed-form" onsubmit="return false;">
-                <div class="tbh-ed-fg">
-                    <label class="tbh-ed-label" for="edName">Full Name</label>
-                    <input type="text" id="edName" placeholder="Enter your first and last name" required>
+            <form class="tbh-ed-form gtm_form" id="event_registration_form" data-form-id="Event Registration Form" onsubmit="return false;">
+                <div class="tbh-ed-fg form-group">
+                    <label class="tbh-ed-label" id="edNameLabel" for="edName">Full Name</label>
+                    <input type="text" name="fullName" id="edName" class="require_check" aria-labelledby="edNameLabel" placeholder="Enter your first and last name" required>
+                    <div class="field-error" id="error_edName"></div>
                 </div>
 
-                <div class="tbh-ed-fg">
-                    <label class="tbh-ed-label" for="edEmail">Email Address</label>
-                    <input type="email" id="edEmail" placeholder="you@example.com" required>
+                <div class="tbh-ed-fg form-group">
+                    <label class="tbh-ed-label" id="edEmailLabel" for="edEmail">Email Address</label>
+                    <input type="email" name="email" id="edEmail" class="require_check" aria-labelledby="edEmailLabel" placeholder="you@example.com" required>
+                    <div class="field-error" id="error_edEmail"></div>
                 </div>
 
-                <div class="tbh-ed-fg">
-                    <label class="tbh-ed-label" for="edPhone">Phone Number</label>
-                    <input type="tel" id="edPhone" placeholder="(555) 000-0000" required>
+                <div class="tbh-ed-fg form-group">
+                    <label class="tbh-ed-label" id="edPhoneLabel" for="edPhone">Phone Number</label>
+                    <input type="tel" name="phoneNo" id="edPhone" class="require_check" aria-labelledby="edPhoneLabel" placeholder="(555) 000-0000" required>
+                    <div class="field-error" id="error_edPhone"></div>
                 </div>
 
                 <div class="tbh-ed-fg-row">
-                    <div class="tbh-ed-fg">
-                        <label class="tbh-ed-label" for="edSkill">Skill Level</label>
-                        <select id="edSkill" required>
+                    <div class="tbh-ed-fg form-group">
+                        <label class="tbh-ed-label" id="edSkillLabel" for="edSkill">Skill Level</label>
+                        <select name="skillLevel" id="edSkill" class="require_check" aria-labelledby="edSkillLabel" required>
                             <option value="" selected disabled>Select your level</option>
                             <option value="beginner">Beginner</option>
                             <option value="intermediate">Intermediate</option>
                             <option value="advanced">Advanced</option>
                         </select>
+                        <div class="field-error" id="error_edSkill"></div>
                     </div>
-                    <div class="tbh-ed-fg">
-                        <label class="tbh-ed-label" for="edRiders">Number of Riders</label>
-                        <select id="edRiders" required>
+                    <div class="tbh-ed-fg form-group">
+                        <label class="tbh-ed-label" id="edRidersLabel" for="edRiders">Number of Riders</label>
+                        <select name="riders" id="edRiders" class="require_check" aria-labelledby="edRidersLabel" required>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
+                        <div class="field-error" id="error_edRiders"></div>
                     </div>
                 </div>
 
-                <label class="tbh-ed-waiver">
-                    <input type="checkbox" checked required>
-                    <span class="tbh-ed-waiver-box"><img src="./assets/images/event-details/icon-check.svg" alt=""></span>
-                    <span class="tbh-ed-waiver-text">I agree to the waiver and terms of participation</span>
-                </label>
+                <div class="form-group">
+                    <label class="tbh-ed-waiver">
+                        <input type="checkbox" name="waiver" id="edWaiver" checked required>
+                        <span class="tbh-ed-waiver-box"><img src="./assets/images/event-details/icon-check.svg" alt=""></span>
+                        <span class="tbh-ed-waiver-text">I agree to the waiver and terms of participation</span>
+                    </label>
+                    <div class="field-error" id="error_edWaiver"></div>
+                </div>
 
-                <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-ed-submit">Complete Registration</button>
+                <input type="text" name="honeypot" id="ed_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+
+                <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-ed-submit gtm_form_submit" data-form-id="Event Registration Form">Complete Registration</button>
 
                 <p class="tbh-ed-form-fine">Spots are limited. Registration closes 48 hours before the event.</p>
             </form>
@@ -354,9 +364,14 @@
                     <p class="tbh-h4 tbh-white tbh-footer-news-title">Stay In The Wake</p>
                     <p class="tbh-footer-news-copy">Get updates on new boats, events, and service tips delivered to your
                         inbox.</p>
-                    <form class="tbh-footer-form" onsubmit="return false;">
-                        <input type="email" placeholder="Email address" aria-label="Email address">
-                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe">Subscribe</button>
+                    <form class="tbh-footer-form gtm_form" id="footer_subscribe_form" data-form-id="Newsletter Signup Form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label id="footerEmailLabel" for="footerEmail" class="sr-only">Email Address*</label>
+                            <input type="email" name="email" id="footerEmail" class="require_check" placeholder="Email address" aria-labelledby="footerEmailLabel">
+                            <div class="field-error" id="error_footerEmail"></div>
+                        </div>
+                        <input type="text" name="honeypot" id="footer_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe gtm_form_submit" data-form-id="Newsletter Signup Form">Subscribe</button>
                     </form>
                 </div>
             </div>

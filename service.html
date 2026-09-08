@@ -265,51 +265,59 @@
                 <h2 class="tbh-h2 tbh-dark">Request an appointment</h2>
             </div>
 
-            <form class="tbh-srv-form" onsubmit="return false;">
+            <form class="tbh-srv-form gtm_form" id="service_request_form" data-form-id="Service Request Form" onsubmit="return false;">
                 <div class="tbh-demo-fields">
                     <div class="row no-gutters justify-content-between">
                         <div class="col-12 col-sm-6 tbh-fg-col">
-                            <div class="tbh-fg">
-                                <label class="tbh-fg-label" for="srvName">Full Name</label>
-                                <input type="text" id="srvName" placeholder="Jane Smith">
+                            <div class="tbh-fg form-group">
+                                <label class="tbh-fg-label" id="srvNameLabel" for="srvName">Full Name</label>
+                                <input type="text" name="fullName" id="srvName" class="require_check" aria-labelledby="srvNameLabel" placeholder="Jane Smith">
+                                <div class="field-error" id="error_srvName"></div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 tbh-fg-col">
-                            <div class="tbh-fg">
-                                <label class="tbh-fg-label" for="srvPhone">Phone Number</label>
-                                <input type="tel" id="srvPhone" placeholder="(555) 123-4567">
+                            <div class="tbh-fg form-group">
+                                <label class="tbh-fg-label" id="srvPhoneLabel" for="srvPhone">Phone Number</label>
+                                <input type="tel" name="phoneNo" id="srvPhone" class="require_check" aria-labelledby="srvPhoneLabel" placeholder="(555) 123-4567">
+                                <div class="field-error" id="error_srvPhone"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row no-gutters justify-content-between">
                         <div class="col-12 col-sm-6 tbh-fg-col">
-                            <div class="tbh-fg">
-                                <label class="tbh-fg-label" for="srvEmail">Email Address</label>
-                                <input type="email" id="srvEmail" placeholder="jane.smith@example.com">
+                            <div class="tbh-fg form-group">
+                                <label class="tbh-fg-label" id="srvEmailLabel" for="srvEmail">Email Address</label>
+                                <input type="email" name="email" id="srvEmail" class="require_check" aria-labelledby="srvEmailLabel" placeholder="jane.smith@example.com">
+                                <div class="field-error" id="error_srvEmail"></div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 tbh-fg-col">
-                            <div class="tbh-fg">
-                                <label class="tbh-fg-label" for="srvBoat">Boat Make / Model / Year</label>
-                                <input type="text" id="srvBoat" placeholder="e.g. 2023 Supra SL">
+                            <div class="tbh-fg form-group">
+                                <label class="tbh-fg-label" id="srvBoatLabel" for="srvBoat">Boat Make / Model / Year</label>
+                                <input type="text" name="boatModel" id="srvBoat" aria-labelledby="srvBoatLabel" placeholder="e.g. 2023 Supra SL">
+                                <div class="field-error" id="error_srvBoat"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tbh-fg">
-                        <label class="tbh-fg-label" for="srvType">Primary Service Needed</label>
-                        <input type="text" id="srvType"
+                    <div class="tbh-fg form-group">
+                        <label class="tbh-fg-label" id="srvTypeLabel" for="srvType">Primary Service Needed</label>
+                        <input type="text" name="serviceType" id="srvType" aria-labelledby="srvTypeLabel"
                             placeholder="Select Service (Engine, Electrical, Trailer, Winterization...)">
+                        <div class="field-error" id="error_srvType"></div>
                     </div>
 
-                    <div class="tbh-fg">
-                        <label class="tbh-fg-label" for="srvDesc">Detailed Description</label>
-                        <textarea id="srvDesc" placeholder="Please describe any issues or requests..."></textarea>
+                    <div class="tbh-fg form-group">
+                        <label class="tbh-fg-label" id="srvDescLabel" for="srvDesc">Detailed Description</label>
+                        <textarea name="message" id="srvDesc" aria-labelledby="srvDescLabel" placeholder="Please describe any issues or requests..."></textarea>
+                        <div class="field-error" id="error_srvDesc"></div>
                     </div>
                 </div>
 
-                <button type="submit" class="tbh-btn tbh-btn-lg tbh-btn-cyan-navy tbh-demo-submit">Send Service
+                <input type="text" name="honeypot" id="srv_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+
+                <button type="submit" class="tbh-btn tbh-btn-lg tbh-btn-cyan-navy tbh-demo-submit gtm_form_submit" data-form-id="Service Request Form">Send Service
                     Request</button>
             </form>
         </div>
@@ -331,9 +339,14 @@
                     <p class="tbh-h4 tbh-white tbh-footer-news-title">Stay In The Wake</p>
                     <p class="tbh-footer-news-copy">Get updates on new boats, events, and service tips delivered to your
                         inbox.</p>
-                    <form class="tbh-footer-form" onsubmit="return false;">
-                        <input type="email" placeholder="Email address" aria-label="Email address">
-                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe">Subscribe</button>
+                    <form class="tbh-footer-form gtm_form" id="footer_subscribe_form" data-form-id="Newsletter Signup Form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label id="footerEmailLabel" for="footerEmail" class="sr-only">Email Address*</label>
+                            <input type="email" name="email" id="footerEmail" class="require_check" placeholder="Email address" aria-labelledby="footerEmailLabel">
+                            <div class="field-error" id="error_footerEmail"></div>
+                        </div>
+                        <input type="text" name="honeypot" id="footer_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe gtm_form_submit" data-form-id="Newsletter Signup Form">Subscribe</button>
                     </form>
                 </div>
             </div>

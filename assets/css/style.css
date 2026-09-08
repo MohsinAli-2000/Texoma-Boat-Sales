@@ -84,6 +84,23 @@ i[class*="fa-"],
     cursor: pointer;
 }
 
+/* ---- form validation (GTM tracked forms) ---- */
+.form-group {
+    position: relative;
+}
+
+.field-error {
+    color: #e02020;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 4px;
+}
+
+/* an empty error slot must not reserve space or it shifts every field */
+.field-error:empty {
+    display: none;
+}
+
 /* ---- typography ---- */
 .tbh-eyebrow {
     font-family: 'Montserrat', sans-serif;
@@ -1542,6 +1559,127 @@ i[class*="fa-"],
     height: 64px;
 }
 
+/* ---- payment calculator popup ---- */
+.tbh-calc-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 20, 38, 0.6);
+    z-index: 290;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s ease;
+}
+
+.tbh-calc-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tbh-calc-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* the extra -6% is the closed-state offset; .is-open lands it at -50% */
+    transform: translate(-50%, -56%);
+    width: 640px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 4px;
+    padding: 40px;
+    z-index: 300;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s ease, transform .3s ease;
+}
+
+.tbh-calc-modal.is-open {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+}
+
+.tbh-calc-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.tbh-calc-title {
+    color: #0f2547;
+    margin-top: 10px;
+}
+
+.tbh-calc-close {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    background: #fff;
+    color: #0f2547;
+    font-size: 16px;
+    line-height: 1;
+    transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+
+.tbh-calc-close:hover {
+    background: #0f2547;
+    border-color: #0f2547;
+    color: #fff;
+}
+
+.tbh-calc-submit {
+    width: 100%;
+    height: 52px;
+}
+
+.tbh-calc-result {
+    display: none;
+    margin-top: 24px;
+    padding: 24px;
+    background: #f4f7fa;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.tbh-calc-result.is-open {
+    display: block;
+}
+
+.tbh-calc-result-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #0f2547;
+}
+
+.tbh-calc-result-value {
+    font-family: 'Anybody', sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 44px;
+    line-height: 52px;
+    color: #1d4386;
+    margin-top: 6px;
+}
+
+.tbh-calc-result-fine {
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    color: #666;
+    margin-top: 10px;
+}
+
 /* ---- sasser wakeboard & watersports school ---- */
 .tbh-school {
     position: relative;
@@ -2080,6 +2218,7 @@ i[class*="fa-"],
 }
 
 .tbh-fg input,
+.tbh-fg select,
 .tbh-fg textarea {
     display: block;
     width: 100%;
@@ -2094,6 +2233,11 @@ i[class*="fa-"],
     color: #191919;
 }
 
+.tbh-fg select {
+    padding: 0 16px;
+    cursor: pointer;
+}
+
 .tbh-fg textarea {
     resize: vertical;
     overflow: auto;
@@ -2105,6 +2249,7 @@ i[class*="fa-"],
 }
 
 .tbh-fg input:focus,
+.tbh-fg select:focus,
 .tbh-fg textarea:focus {
     outline: none;
     border-color: #43b2e5;
@@ -9952,6 +10097,19 @@ i[class*="fa-"],
 
     .tbh-footer-form input {
         width: 100%;
+    }
+
+    .tbh-calc-modal {
+        padding: 24px 20px;
+    }
+
+    .tbh-calc-head {
+        margin-bottom: 20px;
+    }
+
+    .tbh-calc-result-value {
+        font-size: 34px;
+        line-height: 40px;
     }
 
     /* ---- Financing page ---- */

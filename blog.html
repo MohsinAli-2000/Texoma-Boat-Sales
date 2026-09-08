@@ -275,9 +275,14 @@
             <p class="tbh-p-lg tbh-bl-news-para">Get boat maintenance checklists, wakeboard setup guides, and exclusive
                 event announcements sent straight to your inbox.</p>
 
-            <form class="tbh-bl-news-form" onsubmit="return false;">
-                <input type="email" placeholder="Enter your email address" aria-label="Email address">
-                <button type="submit" class="tbh-btn tbh-btn-cyan-navy">Subscribe Now</button>
+            <form class="tbh-bl-news-form gtm_form" id="blog_subscribe_form" data-form-id="Blog Newsletter Signup Form" onsubmit="return false;">
+                <div class="form-group">
+                    <label id="blogEmailLabel" for="blogEmail" class="sr-only">Email Address*</label>
+                    <input type="email" name="email" id="blogEmail" class="require_check" placeholder="Enter your email address" aria-labelledby="blogEmailLabel">
+                    <div class="field-error" id="error_blogEmail"></div>
+                </div>
+                <input type="text" name="honeypot" id="blog_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                <button type="submit" class="tbh-btn tbh-btn-cyan-navy gtm_form_submit" data-form-id="Blog Newsletter Signup Form">Subscribe Now</button>
             </form>
         </div>
     </section>
@@ -298,9 +303,14 @@
                     <p class="tbh-h4 tbh-white tbh-footer-news-title">Stay In The Wake</p>
                     <p class="tbh-footer-news-copy">Get updates on new boats, events, and service tips delivered to your
                         inbox.</p>
-                    <form class="tbh-footer-form" onsubmit="return false;">
-                        <input type="email" placeholder="Email address" aria-label="Email address">
-                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe">Subscribe</button>
+                    <form class="tbh-footer-form gtm_form" id="footer_subscribe_form" data-form-id="Newsletter Signup Form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label id="footerEmailLabel" for="footerEmail" class="sr-only">Email Address*</label>
+                            <input type="email" name="email" id="footerEmail" class="require_check" placeholder="Email address" aria-labelledby="footerEmailLabel">
+                            <div class="field-error" id="error_footerEmail"></div>
+                        </div>
+                        <input type="text" name="honeypot" id="footer_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe gtm_form_submit" data-form-id="Newsletter Signup Form">Subscribe</button>
                     </form>
                 </div>
             </div>

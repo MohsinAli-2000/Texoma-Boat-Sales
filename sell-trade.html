@@ -452,31 +452,33 @@
                     certified market report within 24 hours. No cost, no obligation.</p>
             </div>
 
-            <form class="tbh-st-val-card" onsubmit="return false;">
+            <form class="tbh-st-val-card gtm_form" id="sell_trade_form" data-form-id="Sell Trade Valuation Form" onsubmit="return false;">
                 <h3 class="tbh-h4 tbh-st-val-card-title">Vessel Details</h3>
 
                 <div class="tbh-st-fields">
                     <div class="row no-gutters justify-content-between">
                         <div class="col-12 col-sm-6 tbh-st-col-half">
-                            <div class="tbh-st-fg">
-                                <label for="stMake">Make / Brand *</label>
-                                <input type="text" id="stMake" placeholder="e.g. Bennington, Cobalt, Nautique..."
+                            <div class="tbh-st-fg form-group">
+                                <label id="stMakeLabel" for="stMake">Make / Brand *</label>
+                                <input type="text" name="boatMake" id="stMake" class="require_check" aria-labelledby="stMakeLabel" placeholder="e.g. Bennington, Cobalt, Nautique..."
                                     required>
+                                <div class="field-error" id="error_stMake"></div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 tbh-st-col-half">
-                            <div class="tbh-st-fg">
-                                <label for="stModel">Model *</label>
-                                <input type="text" id="stModel" placeholder="e.g. R6, G23, 23L..." required>
+                            <div class="tbh-st-fg form-group">
+                                <label id="stModelLabel" for="stModel">Model *</label>
+                                <input type="text" name="boatModel" id="stModel" class="require_check" aria-labelledby="stModelLabel" placeholder="e.g. R6, G23, 23L..." required>
+                                <div class="field-error" id="error_stModel"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row no-gutters justify-content-between">
                         <div class="col-12 col-sm-6 tbh-st-col-half">
-                            <div class="tbh-st-fg">
-                                <label for="stYear">Year *</label>
-                                <select id="stYear" required>
+                            <div class="tbh-st-fg form-group">
+                                <label id="stYearLabel" for="stYear">Year *</label>
+                                <select name="boatYear" id="stYear" class="require_check" aria-labelledby="stYearLabel" required>
                                     <option value="">Select Year</option>
                                     <option>2026</option>
                                     <option>2025</option>
@@ -484,34 +486,40 @@
                                     <option>2023</option>
                                     <option>2022 or older</option>
                                 </select>
+                                <div class="field-error" id="error_stYear"></div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 tbh-st-col-half">
-                            <div class="tbh-st-fg">
-                                <label for="stLength">Length (Feet) *</label>
-                                <select id="stLength" required>
+                            <div class="tbh-st-fg form-group">
+                                <label id="stLengthLabel" for="stLength">Length (Feet) *</label>
+                                <select name="boatLength" id="stLength" class="require_check" aria-labelledby="stLengthLabel" required>
                                     <option value="">Select Length</option>
                                     <option>Under 20 ft</option>
                                     <option>20 - 24 ft</option>
                                     <option>25 - 29 ft</option>
                                     <option>30 ft or more</option>
                                 </select>
+                                <div class="field-error" id="error_stLength"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tbh-st-fg">
-                        <label for="stEmail">Email Address *</label>
-                        <input type="email" id="stEmail" placeholder="Where should we send your report?" required>
+                    <div class="tbh-st-fg form-group">
+                        <label id="stEmailLabel" for="stEmail">Email Address *</label>
+                        <input type="email" name="email" id="stEmail" class="require_check" aria-labelledby="stEmailLabel" placeholder="Where should we send your report?" required>
+                        <div class="field-error" id="error_stEmail"></div>
                     </div>
 
-                    <div class="tbh-st-fg">
-                        <label for="stMessage">Message</label>
-                        <input type="text" id="stMessage" placeholder="Anything else we should know?">
+                    <div class="tbh-st-fg form-group">
+                        <label id="stMessageLabel" for="stMessage">Message</label>
+                        <input type="text" name="message" id="stMessage" aria-labelledby="stMessageLabel" placeholder="Anything else we should know?">
+                        <div class="field-error" id="error_stMessage"></div>
                     </div>
                 </div>
 
-                <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-st-val-submit">Generate Value Report</button>
+                <input type="text" name="honeypot" id="st_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+
+                <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-st-val-submit gtm_form_submit" data-form-id="Sell Trade Valuation Form">Generate Value Report</button>
             </form>
         </div>
     </section>
@@ -589,9 +597,14 @@
                     <p class="tbh-h4 tbh-white tbh-footer-news-title">Stay In The Wake</p>
                     <p class="tbh-footer-news-copy">Get updates on new boats, events, and service tips delivered to your
                         inbox.</p>
-                    <form class="tbh-footer-form" onsubmit="return false;">
-                        <input type="email" placeholder="Email address" aria-label="Email address">
-                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe">Subscribe</button>
+                    <form class="tbh-footer-form gtm_form" id="footer_subscribe_form" data-form-id="Newsletter Signup Form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label id="footerEmailLabel" for="footerEmail" class="sr-only">Email Address*</label>
+                            <input type="email" name="email" id="footerEmail" class="require_check" placeholder="Email address" aria-labelledby="footerEmailLabel">
+                            <div class="field-error" id="error_footerEmail"></div>
+                        </div>
+                        <input type="text" name="honeypot" id="footer_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe gtm_form_submit" data-form-id="Newsletter Signup Form">Subscribe</button>
                     </form>
                 </div>
             </div>

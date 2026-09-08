@@ -173,6 +173,122 @@ $(document).ready(function () {
     /* ===== sell / trade faq accordion code ends here ===== */
 
 
+    /* ===== payment calculator popup code starts here ===== */
+    if ($('.tbh-calc-modal').length) {
+        var $calcModal = $('.tbh-calc-modal');
+        var $calcOverlay = $('.tbh-calc-overlay');
+        var $calcResult = $('#calcResult');
+
+        var calcFields = [
+            { id: 'calcPrice', label: 'Boat price' },
+            { id: 'calcDown', label: 'Down payment' },
+            { id: 'calcTerm', label: 'Term' },
+            { id: 'calcRate', label: 'Interest rate' }
+        ];
+
+        function clearCalcErrors() {
+            $calcModal.find('.field-error').text('');
+        }
+
+        function openCalc() {
+            $calcModal.addClass('is-open');
+            $calcOverlay.addClass('is-open');
+            $('body').addClass('tbh-noscroll');
+        }
+
+        function closeCalc() {
+            $calcModal.removeClass('is-open');
+            $calcOverlay.removeClass('is-open');
+            $('body').removeClass('tbh-noscroll');
+        }
+
+        // reads a field as a number; returns NaN for blank or non-numeric input
+        function fieldValue(id) {
+            var raw = $.trim($('#' + id).val());
+            return raw === '' ? NaN : Number(raw);
+        }
+
+        function validateCalc() {
+            clearCalcErrors();
+            var values = {};
+            var valid = true;
+
+            calcFields.forEach(function (field) {
+                var value = fieldValue(field.id);
+                if (isNaN(value)) {
+                    $('#error_' + field.id).text(field.label + ' is required.');
+                    valid = false;
+                } else if (value < 0) {
+                    $('#error_' + field.id).text(field.label + ' cannot be negative.');
+                    valid = false;
+                }
+                values[field.id] = value;
+            });
+
+            if (!valid) { return null; }
+
+            if (values.calcDown >= values.calcPrice) {
+                $('#error_calcDown').text('Down payment must be less than the boat price.');
+                return null;
+            }
+
+            return values;
+        }
+
+        function monthlyPayment(principal, annualRate, months) {
+            var monthlyRate = annualRate / 100 / 12;
+            // a 0% loan is a plain split of the principal — the amortisation
+            // formula divides by zero there
+            if (monthlyRate === 0) {
+                return principal / months;
+            }
+            var growth = Math.pow(1 + monthlyRate, months);
+            return principal * monthlyRate * growth / (growth - 1);
+        }
+
+        $('.tbh-calc-open').on('click', function (e) {
+            e.preventDefault();
+            openCalc();
+        });
+
+        $('.tbh-calc-close, .tbh-calc-overlay').on('click', closeCalc);
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && $calcModal.hasClass('is-open')) {
+                closeCalc();
+            }
+        });
+
+        $('#payment_calculator_form').on('submit', function (e) {
+            e.preventDefault();
+
+            var values = validateCalc();
+            if (!values) {
+                $calcResult.removeClass('is-open');
+                return;
+            }
+
+            var payment = monthlyPayment(
+                values.calcPrice - values.calcDown,
+                values.calcRate,
+                values.calcTerm
+            );
+
+            $('#calcMonthly').text('$' + payment.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }));
+            $calcResult.addClass('is-open');
+        });
+
+        // a stale result would contradict the edited field still on screen
+        $('#payment_calculator_form').on('input change', '.require_check', function () {
+            $calcResult.removeClass('is-open');
+        });
+    }
+    /* ===== payment calculator popup code ends here ===== */
+
+
     /* ===== carousels code starts here ===== */
     /* Every slider is Owl Carousel 2 and every init is .length-guarded:
 

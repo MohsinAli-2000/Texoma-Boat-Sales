@@ -256,57 +256,64 @@
                     <p class="tbh-p-lg tbh-pt-finder-para">Fill out our secure parts desk form. Our team will verify
                         availability, lock in your pricing, and follow up within 24 business hours.</p>
 
-                    <form class="tbh-pf-fields" onsubmit="return false;">
+                    <form class="tbh-pf-fields gtm_form" id="parts_request_form" data-form-id="Parts Request Form" onsubmit="return false;">
                         <div class="row no-gutters tbh-pf-row">
                             <div class="col-12 col-sm-6 tbh-fg-col">
-                                <div class="tbh-pf-field">
-                                    <label class="tbh-pf-label" for="ptName">Your Name *</label>
-                                    <input type="text" id="ptName" placeholder="John Doe" required>
+                                <div class="tbh-pf-field form-group">
+                                    <label class="tbh-pf-label" id="ptNameLabel" for="ptName">Your Name *</label>
+                                    <input type="text" name="fullName" id="ptName" class="require_check" aria-labelledby="ptNameLabel" placeholder="John Doe" required>
+                                    <div class="field-error" id="error_ptName"></div>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 tbh-fg-col">
-                                <div class="tbh-pf-field">
-                                    <label class="tbh-pf-label" for="ptEmail">Email Address *</label>
-                                    <input type="email" id="ptEmail" placeholder="john@example.com" required>
+                                <div class="tbh-pf-field form-group">
+                                    <label class="tbh-pf-label" id="ptEmailLabel" for="ptEmail">Email Address *</label>
+                                    <input type="email" name="email" id="ptEmail" class="require_check" aria-labelledby="ptEmailLabel" placeholder="john@example.com" required>
+                                    <div class="field-error" id="error_ptEmail"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row no-gutters tbh-pf-row">
                             <div class="col-12 col-sm-6 tbh-fg-col">
-                                <div class="tbh-pf-field">
-                                    <label class="tbh-pf-label" for="ptPhone">Phone Number *</label>
-                                    <input type="tel" id="ptPhone" placeholder="(555) 000-0000" required>
+                                <div class="tbh-pf-field form-group">
+                                    <label class="tbh-pf-label" id="ptPhoneLabel" for="ptPhone">Phone Number *</label>
+                                    <input type="tel" name="phoneNo" id="ptPhone" class="require_check" aria-labelledby="ptPhoneLabel" placeholder="(555) 000-0000" required>
+                                    <div class="field-error" id="error_ptPhone"></div>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 tbh-fg-col">
-                                <div class="tbh-pf-field">
-                                    <label class="tbh-pf-label" for="ptBoat">Boat Make &amp; Model</label>
-                                    <input type="text" id="ptBoat" placeholder="Moomba Craz 2024">
+                                <div class="tbh-pf-field form-group">
+                                    <label class="tbh-pf-label" id="ptBoatLabel" for="ptBoat">Boat Make &amp; Model</label>
+                                    <input type="text" name="boatModel" id="ptBoat" aria-labelledby="ptBoatLabel" placeholder="Moomba Craz 2024">
+                                    <div class="field-error" id="error_ptBoat"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row no-gutters tbh-pf-row">
                             <div class="col-12 col-sm-6 tbh-fg-col">
-                                <div class="tbh-pf-field">
-                                    <label class="tbh-pf-label" for="ptPartNum">Part Number (if known)</label>
-                                    <input type="text" id="ptPartNum" placeholder="82-140A-02">
+                                <div class="tbh-pf-field form-group">
+                                    <label class="tbh-pf-label" id="ptPartNumLabel" for="ptPartNum">Part Number (if known)</label>
+                                    <input type="text" name="partNumber" id="ptPartNum" aria-labelledby="ptPartNumLabel" placeholder="82-140A-02">
+                                    <div class="field-error" id="error_ptPartNum"></div>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 tbh-fg-col">
-                                <div class="tbh-pf-field">
-                                    <label class="tbh-pf-label" for="ptYear">Boat Year</label>
-                                    <input type="text" id="ptYear" placeholder="2024">
+                                <div class="tbh-pf-field form-group">
+                                    <label class="tbh-pf-label" id="ptYearLabel" for="ptYear">Boat Year</label>
+                                    <input type="text" name="boatYear" id="ptYear" aria-labelledby="ptYearLabel" placeholder="2024">
+                                    <div class="field-error" id="error_ptYear"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="tbh-pf-field">
-                            <label class="tbh-pf-label" for="ptDesc">Detailed Description of Part needed *</label>
-                            <textarea id="ptDesc" rows="1"
+                        <div class="tbh-pf-field form-group">
+                            <label class="tbh-pf-label" id="ptDescLabel" for="ptDesc">Detailed Description of Part needed *</label>
+                            <textarea name="description" id="ptDesc" class="require_check" aria-labelledby="ptDescLabel" rows="1"
                                 placeholder="Please describe the location or function of the required part..."
                                 required></textarea>
+                            <div class="field-error" id="error_ptDesc"></div>
                         </div>
 
                         <label class="tbh-pf-checkline">
@@ -314,7 +321,9 @@
                             <span>Yes, I require shipping to my home address (Available nationwide).</span>
                         </label>
 
-                        <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-pf-submit">Submit Parts Desk
+                        <input type="text" name="honeypot" id="pt_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+
+                        <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-pf-submit gtm_form_submit" data-form-id="Parts Request Form">Submit Parts Desk
                             Request</button>
                     </form>
                 </div>
@@ -397,9 +406,14 @@
                     <p class="tbh-h4 tbh-white tbh-footer-news-title">Stay In The Wake</p>
                     <p class="tbh-footer-news-copy">Get updates on new boats, events, and service tips delivered to your
                         inbox.</p>
-                    <form class="tbh-footer-form" onsubmit="return false;">
-                        <input type="email" placeholder="Email address" aria-label="Email address">
-                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe">Subscribe</button>
+                    <form class="tbh-footer-form gtm_form" id="footer_subscribe_form" data-form-id="Newsletter Signup Form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label id="footerEmailLabel" for="footerEmail" class="sr-only">Email Address*</label>
+                            <input type="email" name="email" id="footerEmail" class="require_check" placeholder="Email address" aria-labelledby="footerEmailLabel">
+                            <div class="field-error" id="error_footerEmail"></div>
+                        </div>
+                        <input type="text" name="honeypot" id="footer_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe gtm_form_submit" data-form-id="Newsletter Signup Form">Subscribe</button>
                     </form>
                 </div>
             </div>

@@ -134,53 +134,61 @@
                     either of our premium boathouse locations.</p>
             </div>
 
-            <form class="tbh-ct-card" onsubmit="return false;">
+            <form class="tbh-ct-card gtm_form" id="contact_form" data-form-id="Contact Us Form" onsubmit="return false;">
                 <div class="tbh-ct-card-head">
                     <p class="tbh-eyebrow">Write To Us</p>
                     <h2 class="tbh-h3 tbh-ct-card-title">Send A Message</h2>
                 </div>
 
-                <div class="tbh-ct-fg">
-                    <label class="tbh-ct-label" for="ctName">Your Name <span class="tbh-ct-req">*</span></label>
-                    <input type="text" id="ctName" placeholder="e.g. John Smith" required>
+                <div class="tbh-ct-fg form-group">
+                    <label class="tbh-ct-label" id="ctNameLabel" for="ctName">Your Name <span class="tbh-ct-req">*</span></label>
+                    <input type="text" name="fullName" id="ctName" class="require_check" aria-labelledby="ctNameLabel" placeholder="e.g. John Smith" required>
+                    <div class="field-error" id="error_ctName"></div>
                 </div>
 
                 <div class="row no-gutters justify-content-between">
                     <div class="col-12 col-sm-6 tbh-ct-col">
-                        <div class="tbh-ct-fg">
-                            <label class="tbh-ct-label" for="ctEmail">Email Address <span
+                        <div class="tbh-ct-fg form-group">
+                            <label class="tbh-ct-label" id="ctEmailLabel" for="ctEmail">Email Address <span
                                     class="tbh-ct-req">*</span></label>
-                            <input type="email" id="ctEmail" placeholder="e.g. john@example.com" required>
+                            <input type="email" name="email" id="ctEmail" class="require_check" aria-labelledby="ctEmailLabel" placeholder="e.g. john@example.com" required>
+                            <div class="field-error" id="error_ctEmail"></div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 tbh-ct-col">
-                        <div class="tbh-ct-fg">
-                            <label class="tbh-ct-label" for="ctPhone">Phone Number</label>
-                            <input type="tel" id="ctPhone" placeholder="e.g. (555) 123-4567">
+                        <div class="tbh-ct-fg form-group">
+                            <label class="tbh-ct-label" id="ctPhoneLabel" for="ctPhone">Phone Number</label>
+                            <input type="tel" name="phoneNo" id="ctPhone" aria-labelledby="ctPhoneLabel" placeholder="e.g. (555) 123-4567">
+                            <div class="field-error" id="error_ctPhone"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="tbh-ct-fg">
-                    <label class="tbh-ct-label" for="ctLocation">Preferred Location</label>
-                    <select id="ctLocation">
+                <div class="tbh-ct-fg form-group">
+                    <label class="tbh-ct-label" id="ctLocationLabel" for="ctLocation">Preferred Location</label>
+                    <select name="preferredLocation" id="ctLocation" aria-labelledby="ctLocationLabel">
                         <option value="">Select location...</option>
                         <option value="texoma">Lake Texoma (HQ) &mdash; Calera, OK</option>
                         <option value="dallas">Dallas, TX &mdash; Hickory Creek</option>
                     </select>
+                    <div class="field-error" id="error_ctLocation"></div>
                 </div>
 
-                <div class="tbh-ct-fg">
-                    <label class="tbh-ct-label" for="ctSubject">Subject <span class="tbh-ct-req">*</span></label>
-                    <input type="text" id="ctSubject" placeholder="How can we help you?" required>
+                <div class="tbh-ct-fg form-group">
+                    <label class="tbh-ct-label" id="ctSubjectLabel" for="ctSubject">Subject <span class="tbh-ct-req">*</span></label>
+                    <input type="text" name="subject" id="ctSubject" class="require_check" aria-labelledby="ctSubjectLabel" placeholder="How can we help you?" required>
+                    <div class="field-error" id="error_ctSubject"></div>
                 </div>
 
-                <div class="tbh-ct-fg">
-                    <label class="tbh-ct-label" for="ctMessage">Message</label>
-                    <textarea id="ctMessage" placeholder="Type your message here..."></textarea>
+                <div class="tbh-ct-fg form-group">
+                    <label class="tbh-ct-label" id="ctMessageLabel" for="ctMessage">Message</label>
+                    <textarea name="message" id="ctMessage" aria-labelledby="ctMessageLabel" placeholder="Type your message here..."></textarea>
+                    <div class="field-error" id="error_ctMessage"></div>
                 </div>
 
-                <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-ct-submit">Send Message</button>
+                <input type="text" name="honeypot" id="ct_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+
+                <button type="submit" class="tbh-btn tbh-btn-cyan-navy tbh-ct-submit gtm_form_submit" data-form-id="Contact Us Form">Send Message</button>
             </form>
         </div>
     </section>
@@ -271,9 +279,14 @@
                     <p class="tbh-h4 tbh-white tbh-footer-news-title">Stay In The Wake</p>
                     <p class="tbh-footer-news-copy">Get updates on new boats, events, and service tips delivered to your
                         inbox.</p>
-                    <form class="tbh-footer-form" onsubmit="return false;">
-                        <input type="email" placeholder="Email address" aria-label="Email address">
-                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe">Subscribe</button>
+                    <form class="tbh-footer-form gtm_form" id="footer_subscribe_form" data-form-id="Newsletter Signup Form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label id="footerEmailLabel" for="footerEmail" class="sr-only">Email Address*</label>
+                            <input type="email" name="email" id="footerEmail" class="require_check" placeholder="Email address" aria-labelledby="footerEmailLabel">
+                            <div class="field-error" id="error_footerEmail"></div>
+                        </div>
+                        <input type="text" name="honeypot" id="footer_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe gtm_form_submit" data-form-id="Newsletter Signup Form">Subscribe</button>
                     </form>
                 </div>
             </div>

@@ -141,68 +141,78 @@
         <div class="tbh-shell">
             <div class="row no-gutters justify-content-between tbh-demo-row">
                 <div class="col-12 col-lg-7 tbh-demo-form-col">
-                    <form class="tbh-demo-form" onsubmit="return false;">
+                    <form class="tbh-demo-form gtm_form" id="demo_request_form" data-form-id="Schedule Demo Form" onsubmit="return false;">
                         <h2 class="tbh-h3 tbh-demo-form-title">VIP Demo Request</h2>
 
                         <div class="tbh-demo-fields">
                             <div class="row no-gutters justify-content-between">
                                 <div class="col-12 col-sm-6 tbh-fg-col">
-                                    <div class="tbh-fg">
-                                        <label class="tbh-fg-label" for="demoFirst">First Name</label>
-                                        <input type="text" id="demoFirst" placeholder="John">
+                                    <div class="tbh-fg form-group">
+                                        <label class="tbh-fg-label" id="demoFirstLabel" for="demoFirst">First Name</label>
+                                        <input type="text" name="firstName" id="demoFirst" class="require_check" aria-labelledby="demoFirstLabel" placeholder="John">
+                                        <div class="field-error" id="error_demoFirst"></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 tbh-fg-col">
-                                    <div class="tbh-fg">
-                                        <label class="tbh-fg-label" for="demoLast">Last Name</label>
-                                        <input type="text" id="demoLast" placeholder="Doe">
+                                    <div class="tbh-fg form-group">
+                                        <label class="tbh-fg-label" id="demoLastLabel" for="demoLast">Last Name</label>
+                                        <input type="text" name="lastName" id="demoLast" class="require_check" aria-labelledby="demoLastLabel" placeholder="Doe">
+                                        <div class="field-error" id="error_demoLast"></div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row no-gutters justify-content-between">
                                 <div class="col-12 col-sm-6 tbh-fg-col">
-                                    <div class="tbh-fg">
-                                        <label class="tbh-fg-label" for="demoEmail">Email Address</label>
-                                        <input type="email" id="demoEmail" placeholder="john.doe@example.com">
+                                    <div class="tbh-fg form-group">
+                                        <label class="tbh-fg-label" id="demoEmailLabel" for="demoEmail">Email Address</label>
+                                        <input type="email" name="email" id="demoEmail" class="require_check" aria-labelledby="demoEmailLabel" placeholder="john.doe@example.com">
+                                        <div class="field-error" id="error_demoEmail"></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 tbh-fg-col">
-                                    <div class="tbh-fg">
-                                        <label class="tbh-fg-label" for="demoPhone">Phone Number</label>
-                                        <input type="tel" id="demoPhone" placeholder="(555) 000-0000">
+                                    <div class="tbh-fg form-group">
+                                        <label class="tbh-fg-label" id="demoPhoneLabel" for="demoPhone">Phone Number</label>
+                                        <input type="tel" name="phoneNo" id="demoPhone" class="require_check" aria-labelledby="demoPhoneLabel" placeholder="(555) 000-0000">
+                                        <div class="field-error" id="error_demoPhone"></div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row no-gutters justify-content-between">
                                 <div class="col-12 col-sm-6 tbh-fg-col">
-                                    <div class="tbh-fg">
-                                        <label class="tbh-fg-label" for="demoDate">Preferred Date</label>
-                                        <input type="text" id="demoDate" placeholder="MM / DD / YYYY">
+                                    <div class="tbh-fg form-group">
+                                        <label class="tbh-fg-label" id="demoDateLabel" for="demoDate">Preferred Date</label>
+                                        <input type="text" name="preferredDate" id="demoDate" aria-labelledby="demoDateLabel" placeholder="MM / DD / YYYY">
+                                        <div class="field-error" id="error_demoDate"></div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6 tbh-fg-col">
-                                    <div class="tbh-fg">
-                                        <label class="tbh-fg-label" for="demoTime">Preferred Time</label>
-                                        <input type="text" id="demoTime" placeholder="e.g. 10:00 AM">
+                                    <div class="tbh-fg form-group">
+                                        <label class="tbh-fg-label" id="demoTimeLabel" for="demoTime">Preferred Time</label>
+                                        <input type="text" name="preferredTime" id="demoTime" aria-labelledby="demoTimeLabel" placeholder="e.g. 10:00 AM">
+                                        <div class="field-error" id="error_demoTime"></div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="tbh-fg">
-                                <label class="tbh-fg-label" for="demoModel">Boat Model of Interest</label>
-                                <input type="text" id="demoModel" placeholder="e.g. Moomba Craz / Supra SA">
+                            <div class="tbh-fg form-group">
+                                <label class="tbh-fg-label" id="demoModelLabel" for="demoModel">Boat Model of Interest</label>
+                                <input type="text" name="boatModel" id="demoModel" aria-labelledby="demoModelLabel" placeholder="e.g. Moomba Craz / Supra SA">
+                                <div class="field-error" id="error_demoModel"></div>
                             </div>
 
-                            <div class="tbh-fg">
-                                <label class="tbh-fg-label" for="demoMessage">Special Requests / Message</label>
-                                <textarea id="demoMessage"
+                            <div class="tbh-fg form-group">
+                                <label class="tbh-fg-label" id="demoMessageLabel" for="demoMessage">Special Requests / Message</label>
+                                <textarea name="message" id="demoMessage" aria-labelledby="demoMessageLabel"
                                     placeholder="Let us know what you want to focus on during your on-water run..."></textarea>
+                                <div class="field-error" id="error_demoMessage"></div>
                             </div>
                         </div>
 
-                        <button type="submit" class="tbh-btn tbh-btn-lg tbh-btn-cyan-navy tbh-demo-submit">Submit Demo
+                        <input type="text" name="honeypot" id="demo_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+
+                        <button type="submit" class="tbh-btn tbh-btn-lg tbh-btn-cyan-navy tbh-demo-submit gtm_form_submit" data-form-id="Schedule Demo Form">Submit Demo
                             Request</button>
                     </form>
                 </div>
@@ -295,9 +305,14 @@
                     <p class="tbh-h4 tbh-white tbh-footer-news-title">Stay In The Wake</p>
                     <p class="tbh-footer-news-copy">Get updates on new boats, events, and service tips delivered to your
                         inbox.</p>
-                    <form class="tbh-footer-form" onsubmit="return false;">
-                        <input type="email" placeholder="Email address" aria-label="Email address">
-                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe">Subscribe</button>
+                    <form class="tbh-footer-form gtm_form" id="footer_subscribe_form" data-form-id="Newsletter Signup Form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label id="footerEmailLabel" for="footerEmail" class="sr-only">Email Address*</label>
+                            <input type="email" name="email" id="footerEmail" class="require_check" placeholder="Email address" aria-labelledby="footerEmailLabel">
+                            <div class="field-error" id="error_footerEmail"></div>
+                        </div>
+                        <input type="text" name="honeypot" id="footer_honeypot" class="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                        <button type="submit" class="tbh-btn tbh-btn-cyan tbh-footer-subscribe gtm_form_submit" data-form-id="Newsletter Signup Form">Subscribe</button>
                     </form>
                 </div>
             </div>
